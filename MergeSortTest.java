@@ -53,8 +53,12 @@ public class MergeSortTest {
             System.out.println("Test " + (i+1) + " (Parallel)\tTime: " + parallelTime / 1000.0 + "s | " + parallelTime + "ms");
         }
 
-        System.out.println("Average time for standard merge sort: " + standardTotalTime / NUM_TESTS / 1000.0 + "s | " + standardTotalTime / NUM_TESTS / 1.0+ "ms");
-        System.out.println("Average time for parallel merge sort: " + parallelTotalTime / NUM_TESTS / 1000.0 + "s | " + parallelTotalTime / NUM_TESTS + "ms");
+        double standardAverageMS = standardTotalTime / NUM_TESTS / 1.0;
+        double parallelAverageMS = parallelTotalTime / NUM_TESTS / 1.0;
+        double standardAverageSec = standardAverageMS / 1000.0;
+        double parallelAverageSec = parallelAverageMS / 1000.0;
+        System.out.println("Average time for standard merge sort: " + standardAverageSec + "s | " + standardAverageMS + "ms");
+        System.out.println("Average time for parallel merge sort: " + parallelAverageSec + "s | " + parallelAverageMS + "ms");
     }
 
     // Standard merge sort implementation for a generic array. 
