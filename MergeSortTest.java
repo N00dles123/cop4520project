@@ -5,10 +5,11 @@ import java.util.*;
 public class MergeSortTest {
     private static int ARRAY_SIZE;
     private static int NUM_TESTS;
+    private static int NUM_THREADS;
 
     public static void main(String[] args) {
         // No command arguments given, sad!!
-        if (args.length != 2)
+        if (args.length != 3)
         {
             System.out.println("Please use the proper command line arguments\n" + 
                 "Run this program like this: java MergeSortTest <Array Size> <Number of Tests>");
@@ -18,6 +19,10 @@ public class MergeSortTest {
         // Set the array size and number of tests for this benchmark
         ARRAY_SIZE = Integer.parseInt(args[0]);
         NUM_TESTS = Integer.parseInt(args[1]);
+        NUM_THREADS = Integer.parseInt(args[2]);
+
+        System.out.println("ARRAY SIZE: " + ARRAY_SIZE + " | NUMBER OF TESTS: " + NUM_TESTS + 
+                        "\nNUMBER OF THREADS: " + NUM_THREADS);
 
         // Fill the array with random integers from 0 to N
         Random random = new Random();
@@ -28,7 +33,7 @@ public class MergeSortTest {
 
         // Keep a running sum of the total time taken of the runtimes
         long standardTotalTime = 0;
-        //long parallelTotalTime = 0;
+        long parallelTotalTime = 0;
 
         // Go through each test
         for (int i = 0; i < NUM_TESTS; i++) 
@@ -42,16 +47,15 @@ public class MergeSortTest {
             Collections.shuffle(Arrays.asList(array)); // shuffle array
         
         //  Code structure for benchmarking parallel merge sort after it's implemented
-        //     Integer[] parallelArray = array.clone();
-        //     long parallelTime = timeSort(() -> <call parallel merge sort here>)
-        //     parallelTotalTime += parallelTime;
-        //     System.out.println("Test " + (i+1) + " (Parallel)\tTime: " + parallelTime / 1000.0 + "s | " + standardTime + "ms");
+            Integer[] parallelArray = array.clone();
+            long parallelTime = timeSort(() -> new MultiMerge<Integer>().sort(parallelArray, NUM_THREADS));
+            parallelTotalTime += parallelTime;
+            System.out.println("Test " + (i+1) + " (Parallel)\tTime: " + parallelTime / 1000.0 + "s | " + parallelTime + "ms");
         }
 
         System.out.println("Average time for standard merge sort: " + standardTotalTime / NUM_TESTS / 1000.0 + "s | " + standardTotalTime / NUM_TESTS / 1.0+ "ms");
-        //System.out.println("Average time for parallel merge sort: " + parallelTotalTime / NUM_TESTS / 1000.0 + "s | " + parallelTotalTime / NUM_TESTS + "ms");
+        System.out.println("Average time for parallel merge sort: " + parallelTotalTime / NUM_TESTS / 1000.0 + "s | " + parallelTotalTime / NUM_TESTS + "ms");
     }
-
 
     // Standard merge sort implementation for a generic array. 
     public static <T extends Comparable<T>> void mergeSort(T[] array) 
