@@ -21,10 +21,24 @@ public class fractionalKnapsack {
         return value;
     }
 
-    public static double multiThreadFractionalKnapsack(ArrayList<Item> items, int capacity){
+    public static double eightThreadKnapsack(ArrayList<Item> items, int capacity){
         double value = 0.0;
         /*
-        MultiMerge<Item> sorter = new MultiMerge<Item>();
+        MultiMerge<Item> sorter = new MultiMerge<Item>(8);
+        
+        sorter.sort(items, new Comparator<Item>(){
+            public int compare(Item a, Item b){
+                return (int)(b.cost - a.cost);
+            }
+        });
+        */
+        return value;
+    }
+
+    public static double sixteenThreadKnapsack(ArrayList<Item> items, int capacity){
+        double value = 0.0;
+        /*
+        MultiMerge<Item> sorter = new MultiMerge<Item>(16);
         
         sorter.sort(items, new Comparator<Item>(){
             public int compare(Item a, Item b){
