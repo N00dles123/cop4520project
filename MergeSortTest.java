@@ -46,7 +46,6 @@ public class MergeSortTest {
             System.out.println("Test " + (i+1) + " (Standard)\tTime: " + standardTime / 1000.0 + "s | " + standardTime / 1.0 + "ms");
             Collections.shuffle(Arrays.asList(array)); // shuffle array
         
-        //  Code structure for benchmarking parallel merge sort after it's implemented
             Integer[] parallelArray = array.clone();
             long parallelTime = timeSort(() -> new MultiMerge<Integer>().sort(parallelArray, NUM_THREADS));
             parallelTotalTime += parallelTime;
