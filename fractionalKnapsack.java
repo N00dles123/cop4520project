@@ -1,117 +1,76 @@
 import java.util.*;
 class fractionalKnapsack {
     
-    /*
     public static void main(String[] args){
+        MultiMerge<Item> sorter = new MultiMerge<Item>();
         ArrayList<Item> items = new ArrayList<Item>();
-        // make script
-        // generate list of items random weight and capacity
-        int capacity = 100000;
-        for(int i = 0; i < 100000; i++){
-            Random rand = new Random();
-            int value = rand.nextInt(15);
-            int weight = rand.nextInt(15);
-            Item item = new Item(value, weight);
-            items.add(item);
+        Random random = new Random();
+        for(int i = 0; i < 10000000; i++){
+            items.add(new Item(random.nextInt(29) + 1, random.nextInt(29) + 1));
         }
-
-        // run single thread
-        long startTime = System.currentTimeMillis();
-        double singleThreadValue = singleThreadFractionalKnapsack(items, capacity);
-        long endTime = System.currentTimeMillis();
-        for(Item item: items){
-            System.out.println(item.cost);
-        }
-        long duration = (endTime - startTime);
-        System.out.println("Single Thread: " + duration + "ms");
-        System.out.println("Single Thread: " + singleThreadValue);
+        int cap = 100000;
+        //System.out.println(items);
+        System.out.println(items);
+        long start = System.currentTimeMillis();
+        
+        Collections.sort(items);
+        long end = System.currentTimeMillis();
+        System.out.println("Single Thread: " + (end - start));
         Collections.shuffle(items);
-        startTime = System.currentTimeMillis();
-        double eightThreadValue = eightThreadKnapsack(items, capacity);
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime);
-        System.out.println("Eight Thread: " + duration + "ms");
-        System.out.println("Eight Thread: " + eightThreadValue);
+        start = System.currentTimeMillis();
+        sorter.sort(items, 8);
+        end = System.currentTimeMillis();
+        System.out.println("Eight Thread: " + (end - start));
     }
-    */
+    
     public static double singleThreadFractionalKnapsack(ArrayList<Item> items, int capacity){
         double value = 0.0;
-        MultiMerge<Item> sorter = new MultiMerge<Item>();
+        int cap = capacity;
+        //MultiMerge<Item> sorter = new MultiMerge<Item>();
         // 1 threaded merge sort
-        sorter.sort(items, 1);
+        Collections.sort(items);
         
         for(Item item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
-            if(capacity - currentWeight >= 0){
-                capacity -= currentWeight;
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
                 value += currentVal;
             }
             else{
-                double fraction = (double)capacity/(double)currentWeight;
+                double fraction = (double)cap/(double)currentWeight;
                 value += (currentVal*fraction);
-                capacity = (int)(capacity - (currentWeight*fraction));
+                cap = (int)(cap - (currentWeight*fraction));
                 break;
             }
         }
         return value;
     }
 
-    public static double eightThreadKnapsack(ArrayList<Item> items, int capacity){
+    public static double nThreadKnapsack(ArrayList<Item> items, int capacity, int threads){
         double value = 0.0;
-        
+        int cap = capacity;
         MultiMerge<Item> sorter = new MultiMerge<Item>();
         // 8 threaded merge sort
-        sorter.sort(items, 8);
+        sorter.sort(items, threads);
 
         for(Item item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
-            if(capacity - currentWeight >= 0){
-                capacity -= currentWeight;
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
                 value += currentVal;
             }
             else{
-                double fraction = (double)capacity/(double)currentWeight;
+                double fraction = (double)cap/(double)currentWeight;
                 value += (currentVal*fraction);
-                capacity = (int)(capacity - (currentWeight*fraction));
+                cap = (int)(cap - (currentWeight*fraction));
                 break;
             }
         }
 
-        
-        return value;
-    }
-    public static void mergeSort(ArrayList<Item> items){
-
-    }
-    public static void merge(){
-
-    }
-    public static double sixteenThreadKnapsack(ArrayList<Item> items, int capacity){
-        double value = 0.0;
-        
-        MultiMerge<Item> sorter = new MultiMerge<Item>();
-        // 16 threaded merge sort
-        sorter.sort(items, 16);
-
-        for(Item item: items){
-            int currentWeight = item.weight;
-            int currentVal = item.value;
-
-            if(capacity - currentWeight >= 0){
-                capacity -= currentWeight;
-                value += currentVal;
-            }
-            else{
-                double fraction = (double)capacity/(double)currentWeight;
-                value += (currentVal*fraction);
-                capacity = (int)(capacity - (currentWeight*fraction));
-                break;
-            }
-        }
         
         return value;
     }
