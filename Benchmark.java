@@ -2,7 +2,7 @@ import java.util.*;
 
 // This program will run benchmarks for measuring average runtime for a standard
 // merge sort and a parallelized merge sort.
-public class MergeSortTest {
+public class Benchmark {
     private static int ARRAY_SIZE;
     private static int NUM_TESTS;
     private static int NUM_THREADS;
@@ -31,17 +31,22 @@ public class MergeSortTest {
         for (int i = 0; i < ARRAY_SIZE; i++)
             array[i] = random.nextInt(ARRAY_SIZE);
 
+        // Fill the list with random integers from 0 to N
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < ARRAY_SIZE; i++)
+            list.add(random.nextInt(ARRAY_SIZE));
+        
         // Keep a running sum of the total time taken of the runtimes
         long standardTotalTime = 0;
         long parallelTotalTime = 0;
 
-        // Go through each test
+        // Go through each test for arrays
         for (int i = 0; i < NUM_TESTS; i++) 
         {
             // Store a copy of the randomized array into the array to be sorted
             Integer[] standardArray = array.clone();
             // Run and time the sorting algorithm by passing a runnable lambda
-            long standardTime = timeSort(() -> MergeSortTest.mergeSort(standardArray));
+            long standardTime = timeSort(() -> Benchmark.mergeSort(standardArray));
             standardTotalTime += standardTime;
             System.out.println("Test " + (i+1) + " (Standard)\tTime: " + standardTime / 1000.0 + "s | " + standardTime / 1.0 + "ms");
             Collections.shuffle(Arrays.asList(array)); // shuffle array
@@ -49,7 +54,7 @@ public class MergeSortTest {
             Integer[] parallelArray = array.clone();
             long parallelTime = timeSort(() -> new MultiMerge<Integer>().sort(parallelArray, NUM_THREADS));
             parallelTotalTime += parallelTime;
-            System.out.println("Test " + (i+1) + " (Parallel)\tTime: " + parallelTime / 1000.0 + "s | " + parallelTime + "ms");
+            System.out.println("Test " + (i+1) + " (Parallel)\tTime: " + parallelTime / 1000.0 + "s | " + parallelTime / 1.0 + "ms");
         }
 
         double standardAverageMS = standardTotalTime / NUM_TESTS / 1.0;
