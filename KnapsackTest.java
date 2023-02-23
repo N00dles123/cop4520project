@@ -23,11 +23,11 @@ public class KnapsackTest {
         System.out.println("ARRAY SIZE: " + ARRAY_SIZE + " | NUMBER OF TESTS: " + NUM_TESTS + 
                         "\nNUMBER OF THREADS: " + NUM_THREADS + " | KNAPSACK CAPACITY: " + CAPACITY);
         // now create giant array of items to test
-        ArrayList<Item> items = new ArrayList<Item>();
+        Item[] items = new Item[ARRAY_SIZE];
         Random random = new Random();
         KnapsackTest kt = new KnapsackTest();
         for(int i = 0; i < ARRAY_SIZE; i++){
-            items.add(new Item(random.nextInt(29) + 1, random.nextInt(29) + 1));
+            items[i] = new Item(random.nextInt(29) + 1, random.nextInt(29) + 1);
         }
 
         // keep running sum of total time taken
@@ -39,12 +39,12 @@ public class KnapsackTest {
             long singleThread = kt.singleKnapsackTime(items, CAPACITY);
             singleThreadTotalTime += singleThread;
             System.out.println("Test " + (i+1) + " (Single Thread)\tTime: " + singleThread / 1000.0 + "s | " + singleThread / 1.0 + "ms");
-            Collections.shuffle(items); // shuffle array
+            Collections.shuffle(Arrays.asList(items)); // shuffle array
             // run multi thread
             long multiThread = kt.threadedKnapsackTime(NUM_THREADS, items, CAPACITY);
             multiThreadTotalTime += multiThread;
             System.out.println("Test " + (i+1) + " (Multi Thread)\tTime: " + multiThread / 1000.0 + "s | " + multiThread / 1.0 + "ms");
-            Collections.shuffle(items);
+            Collections.shuffle(Arrays.asList(items));
         }
 
         double singleThreadAverage = singleThreadTotalTime / NUM_TESTS / 1.0;
@@ -53,10 +53,12 @@ public class KnapsackTest {
         double multiThreadAverageSeconds = multiThreadAverage / 1000.0;
         System.out.println("Average Single Thread Time: " + singleThreadAverageSeconds + "s | " + singleThreadAverage + "ms");
         System.out.println("Average Multi Thread Time: " + multiThreadAverageSeconds + "s | " + multiThreadAverage + "ms");
+        System.out.println("Total time to run all tests for single thread: " + singleThreadTotalTime / 1000.0 + "s | ");
+        System.out.println("Total time to run all tests for multi thread: " + multiThreadTotalTime / 1000.0 + "s | ");
 
     }
     // this method will run the knapsack algorithm and return the time it took to run needs some fixing
-    private long threadedKnapsackTime(int numThreads, ArrayList<Item> items, int capacity){
+    private long threadedKnapsackTime(int numThreads, Item[] items, int capacity){
         double threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = fractionalKnapsack.nThreadKnapsack(items, capacity, numThreads);
@@ -64,7 +66,7 @@ public class KnapsackTest {
         return (endTime - startTime);
     }
 
-    private long singleKnapsackTime(ArrayList<Item> items, int capacity){
+    private long singleKnapsackTime(Item[] items, int capacity){
         double threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = fractionalKnapsack.singleThreadFractionalKnapsack(items, capacity);
