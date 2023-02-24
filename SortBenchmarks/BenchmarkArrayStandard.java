@@ -2,7 +2,7 @@ import java.util.*;
 
 // This program will run benchmarks for measuring average runtime for a standard
 // merge sort and a parallelized merge sort.
-public class Benchmark {
+public class BenchmarkArrayStandard {
     private static int ARRAY_SIZE;
     private static int NUM_TESTS;
     private static int NUM_THREADS;
@@ -12,7 +12,7 @@ public class Benchmark {
         if (args.length != 3)
         {
             System.out.println("Please use the proper command line arguments\n" + 
-                "Run this program like this: java MergeSortTest <Array Size> <Number of Tests>");
+                "Run this program like this: java MergeSortTest <Array Size> <Number of Tests> <Number of Threads");
             return;
         }
 
@@ -46,7 +46,7 @@ public class Benchmark {
             // Store a copy of the randomized array into the array to be sorted
             Integer[] standardArray = array.clone();
             // Run and time the sorting algorithm by passing a runnable lambda
-            long standardTime = timeSort(() -> Benchmark.mergeSort(standardArray));
+            long standardTime = timeSort(() -> BenchmarkArrayStandard.mergeSort(standardArray));
             standardTotalTime += standardTime;
             System.out.println("Test " + (i+1) + " (Standard)\tTime: " + standardTime / 1000.0 + "s | " + standardTime / 1.0 + "ms");
             Collections.shuffle(Arrays.asList(array)); // shuffle array
