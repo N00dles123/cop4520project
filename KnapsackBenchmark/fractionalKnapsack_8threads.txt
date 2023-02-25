@@ -1,204 +1,208 @@
-ARRAY SIZE: 10000000 | NUMBER OF TESTS: 100
+ARRAY SIZE: 10000000 | NUMBER OF TESTS: 50
 NUMBER OF THREADS: 8 | KNAPSACK CAPACITY: 100000
-Test 1 (Single Thread)	Time: 6.986s | 6986.0ms
-Test 1 (Multi Thread)	Time: 4.272s | 4272.0ms
-Test 2 (Single Thread)	Time: 8.468s | 8468.0ms
-Test 2 (Multi Thread)	Time: 5.002s | 5002.0ms
-Test 3 (Single Thread)	Time: 8.785s | 8785.0ms
-Test 3 (Multi Thread)	Time: 3.609s | 3609.0ms
-Test 4 (Single Thread)	Time: 8.568s | 8568.0ms
-Test 4 (Multi Thread)	Time: 4.117s | 4117.0ms
-Test 5 (Single Thread)	Time: 8.324s | 8324.0ms
-Test 5 (Multi Thread)	Time: 3.729s | 3729.0ms
-Test 6 (Single Thread)	Time: 7.95s | 7950.0ms
-Test 6 (Multi Thread)	Time: 3.77s | 3770.0ms
-Test 7 (Single Thread)	Time: 9.354s | 9354.0ms
-Test 7 (Multi Thread)	Time: 4.153s | 4153.0ms
-Test 8 (Single Thread)	Time: 8.234s | 8234.0ms
-Test 8 (Multi Thread)	Time: 3.34s | 3340.0ms
-Test 9 (Single Thread)	Time: 7.976s | 7976.0ms
-Test 9 (Multi Thread)	Time: 3.613s | 3613.0ms
-Test 10 (Single Thread)	Time: 8.896s | 8896.0ms
-Test 10 (Multi Thread)	Time: 3.883s | 3883.0ms
-Test 11 (Single Thread)	Time: 9.439s | 9439.0ms
-Test 11 (Multi Thread)	Time: 3.669s | 3669.0ms
-Test 12 (Single Thread)	Time: 7.99s | 7990.0ms
-Test 12 (Multi Thread)	Time: 3.603s | 3603.0ms
-Test 13 (Single Thread)	Time: 8.539s | 8539.0ms
-Test 13 (Multi Thread)	Time: 3.506s | 3506.0ms
-Test 14 (Single Thread)	Time: 7.893s | 7893.0ms
-Test 14 (Multi Thread)	Time: 3.433s | 3433.0ms
-Test 15 (Single Thread)	Time: 7.984s | 7984.0ms
-Test 15 (Multi Thread)	Time: 4.183s | 4183.0ms
-Test 16 (Single Thread)	Time: 9.25s | 9250.0ms
-Test 16 (Multi Thread)	Time: 3.824s | 3824.0ms
-Test 17 (Single Thread)	Time: 8.065s | 8065.0ms
-Test 17 (Multi Thread)	Time: 3.659s | 3659.0ms
-Test 18 (Single Thread)	Time: 9.24s | 9240.0ms
-Test 18 (Multi Thread)	Time: 4.078s | 4078.0ms
-Test 19 (Single Thread)	Time: 8.478s | 8478.0ms
-Test 19 (Multi Thread)	Time: 3.689s | 3689.0ms
-Test 20 (Single Thread)	Time: 9.508s | 9508.0ms
-Test 20 (Multi Thread)	Time: 4.358s | 4358.0ms
-Test 21 (Single Thread)	Time: 9.651s | 9651.0ms
-Test 21 (Multi Thread)	Time: 3.973s | 3973.0ms
-Test 22 (Single Thread)	Time: 9.509s | 9509.0ms
-Test 22 (Multi Thread)	Time: 3.508s | 3508.0ms
-Test 23 (Single Thread)	Time: 9.042s | 9042.0ms
-Test 23 (Multi Thread)	Time: 3.633s | 3633.0ms
-Test 24 (Single Thread)	Time: 9.555s | 9555.0ms
-Test 24 (Multi Thread)	Time: 4.177s | 4177.0ms
-Test 25 (Single Thread)	Time: 9.947s | 9947.0ms
-Test 25 (Multi Thread)	Time: 3.923s | 3923.0ms
-Test 26 (Single Thread)	Time: 9.29s | 9290.0ms
-Test 26 (Multi Thread)	Time: 3.72s | 3720.0ms
-Test 27 (Single Thread)	Time: 9.384s | 9384.0ms
-Test 27 (Multi Thread)	Time: 3.767s | 3767.0ms
-Test 28 (Single Thread)	Time: 9.239s | 9239.0ms
-Test 28 (Multi Thread)	Time: 4.063s | 4063.0ms
-Test 29 (Single Thread)	Time: 8.996s | 8996.0ms
-Test 29 (Multi Thread)	Time: 4.057s | 4057.0ms
-Test 30 (Single Thread)	Time: 9.179s | 9179.0ms
-Test 30 (Multi Thread)	Time: 3.816s | 3816.0ms
-Test 31 (Single Thread)	Time: 8.747s | 8747.0ms
-Test 31 (Multi Thread)	Time: 3.611s | 3611.0ms
-Test 32 (Single Thread)	Time: 9.002s | 9002.0ms
-Test 32 (Multi Thread)	Time: 3.609s | 3609.0ms
-Test 33 (Single Thread)	Time: 8.879s | 8879.0ms
-Test 33 (Multi Thread)	Time: 3.663s | 3663.0ms
-Test 34 (Single Thread)	Time: 8.666s | 8666.0ms
-Test 34 (Multi Thread)	Time: 3.692s | 3692.0ms
-Test 35 (Single Thread)	Time: 8.936s | 8936.0ms
-Test 35 (Multi Thread)	Time: 3.532s | 3532.0ms
-Test 36 (Single Thread)	Time: 8.792s | 8792.0ms
-Test 36 (Multi Thread)	Time: 3.663s | 3663.0ms
-Test 37 (Single Thread)	Time: 9.121s | 9121.0ms
-Test 37 (Multi Thread)	Time: 4.45s | 4450.0ms
-Test 38 (Single Thread)	Time: 9.821s | 9821.0ms
-Test 38 (Multi Thread)	Time: 4.031s | 4031.0ms
-Test 39 (Single Thread)	Time: 9.565s | 9565.0ms
-Test 39 (Multi Thread)	Time: 3.925s | 3925.0ms
-Test 40 (Single Thread)	Time: 8.933s | 8933.0ms
-Test 40 (Multi Thread)	Time: 4.373s | 4373.0ms
-Test 41 (Single Thread)	Time: 10.607s | 10607.0ms
-Test 41 (Multi Thread)	Time: 4.236s | 4236.0ms
-Test 42 (Single Thread)	Time: 9.456s | 9456.0ms
-Test 42 (Multi Thread)	Time: 3.679s | 3679.0ms
-Test 43 (Single Thread)	Time: 9.554s | 9554.0ms
-Test 43 (Multi Thread)	Time: 3.706s | 3706.0ms
-Test 44 (Single Thread)	Time: 9.033s | 9033.0ms
-Test 44 (Multi Thread)	Time: 4.002s | 4002.0ms
-Test 45 (Single Thread)	Time: 9.598s | 9598.0ms
-Test 45 (Multi Thread)	Time: 3.563s | 3563.0ms
-Test 46 (Single Thread)	Time: 8.683s | 8683.0ms
-Test 46 (Multi Thread)	Time: 3.606s | 3606.0ms
-Test 47 (Single Thread)	Time: 9.257s | 9257.0ms
-Test 47 (Multi Thread)	Time: 3.326s | 3326.0ms
-Test 48 (Single Thread)	Time: 8.541s | 8541.0ms
-Test 48 (Multi Thread)	Time: 3.831s | 3831.0ms
-Test 49 (Single Thread)	Time: 9.205s | 9205.0ms
-Test 49 (Multi Thread)	Time: 3.51s | 3510.0ms
-Test 50 (Single Thread)	Time: 8.642s | 8642.0ms
-Test 50 (Multi Thread)	Time: 3.586s | 3586.0ms
-Test 51 (Single Thread)	Time: 9.112s | 9112.0ms
-Test 51 (Multi Thread)	Time: 3.836s | 3836.0ms
-Test 52 (Single Thread)	Time: 8.676s | 8676.0ms
-Test 52 (Multi Thread)	Time: 3.947s | 3947.0ms
-Test 53 (Single Thread)	Time: 9.22s | 9220.0ms
-Test 53 (Multi Thread)	Time: 3.707s | 3707.0ms
-Test 54 (Single Thread)	Time: 9.185s | 9185.0ms
-Test 54 (Multi Thread)	Time: 4.084s | 4084.0ms
-Test 55 (Single Thread)	Time: 9.696s | 9696.0ms
-Test 55 (Multi Thread)	Time: 4.088s | 4088.0ms
-Test 56 (Single Thread)	Time: 9.131s | 9131.0ms
-Test 56 (Multi Thread)	Time: 3.711s | 3711.0ms
-Test 57 (Single Thread)	Time: 10.195s | 10195.0ms
-Test 57 (Multi Thread)	Time: 4.013s | 4013.0ms
-Test 58 (Single Thread)	Time: 8.902s | 8902.0ms
-Test 58 (Multi Thread)	Time: 3.939s | 3939.0ms
-Test 59 (Single Thread)	Time: 10.026s | 10026.0ms
-Test 59 (Multi Thread)	Time: 4.053s | 4053.0ms
-Test 60 (Single Thread)	Time: 8.539s | 8539.0ms
-Test 60 (Multi Thread)	Time: 4.389s | 4389.0ms
-Test 61 (Single Thread)	Time: 9.966s | 9966.0ms
-Test 61 (Multi Thread)	Time: 4.338s | 4338.0ms
-Test 62 (Single Thread)	Time: 9.921s | 9921.0ms
-Test 62 (Multi Thread)	Time: 4.473s | 4473.0ms
-Test 63 (Single Thread)	Time: 10.632s | 10632.0ms
-Test 63 (Multi Thread)	Time: 3.604s | 3604.0ms
-Test 64 (Single Thread)	Time: 10.345s | 10345.0ms
-Test 64 (Multi Thread)	Time: 3.62s | 3620.0ms
-Test 65 (Single Thread)	Time: 9.254s | 9254.0ms
-Test 65 (Multi Thread)	Time: 3.991s | 3991.0ms
-Test 66 (Single Thread)	Time: 9.275s | 9275.0ms
-Test 66 (Multi Thread)	Time: 4.375s | 4375.0ms
-Test 67 (Single Thread)	Time: 9.306s | 9306.0ms
-Test 67 (Multi Thread)	Time: 3.624s | 3624.0ms
-Test 68 (Single Thread)	Time: 9.068s | 9068.0ms
-Test 68 (Multi Thread)	Time: 3.774s | 3774.0ms
-Test 69 (Single Thread)	Time: 9.269s | 9269.0ms
-Test 69 (Multi Thread)	Time: 3.742s | 3742.0ms
-Test 70 (Single Thread)	Time: 8.436s | 8436.0ms
-Test 70 (Multi Thread)	Time: 3.837s | 3837.0ms
-Test 71 (Single Thread)	Time: 8.21s | 8210.0ms
-Test 71 (Multi Thread)	Time: 3.428s | 3428.0ms
-Test 72 (Single Thread)	Time: 8.767s | 8767.0ms
-Test 72 (Multi Thread)	Time: 3.758s | 3758.0ms
-Test 73 (Single Thread)	Time: 8.401s | 8401.0ms
-Test 73 (Multi Thread)	Time: 3.615s | 3615.0ms
-Test 74 (Single Thread)	Time: 8.496s | 8496.0ms
-Test 74 (Multi Thread)	Time: 4.406s | 4406.0ms
-Test 75 (Single Thread)	Time: 8.335s | 8335.0ms
-Test 75 (Multi Thread)	Time: 3.974s | 3974.0ms
-Test 76 (Single Thread)	Time: 7.648s | 7648.0ms
-Test 76 (Multi Thread)	Time: 3.74s | 3740.0ms
-Test 77 (Single Thread)	Time: 8.122s | 8122.0ms
-Test 77 (Multi Thread)	Time: 3.451s | 3451.0ms
-Test 78 (Single Thread)	Time: 7.729s | 7729.0ms
-Test 78 (Multi Thread)	Time: 3.094s | 3094.0ms
-Test 79 (Single Thread)	Time: 7.11s | 7110.0ms
-Test 79 (Multi Thread)	Time: 3.116s | 3116.0ms
-Test 80 (Single Thread)	Time: 7.926s | 7926.0ms
-Test 80 (Multi Thread)	Time: 3.949s | 3949.0ms
-Test 81 (Single Thread)	Time: 8.664s | 8664.0ms
-Test 81 (Multi Thread)	Time: 3.645s | 3645.0ms
-Test 82 (Single Thread)	Time: 9.217s | 9217.0ms
-Test 82 (Multi Thread)	Time: 3.715s | 3715.0ms
-Test 83 (Single Thread)	Time: 8.691s | 8691.0ms
-Test 83 (Multi Thread)	Time: 3.256s | 3256.0ms
-Test 84 (Single Thread)	Time: 9.832s | 9832.0ms
-Test 84 (Multi Thread)	Time: 3.447s | 3447.0ms
-Test 85 (Single Thread)	Time: 8.825s | 8825.0ms
-Test 85 (Multi Thread)	Time: 3.791s | 3791.0ms
-Test 86 (Single Thread)	Time: 8.692s | 8692.0ms
-Test 86 (Multi Thread)	Time: 3.531s | 3531.0ms
-Test 87 (Single Thread)	Time: 8.748s | 8748.0ms
-Test 87 (Multi Thread)	Time: 3.849s | 3849.0ms
-Test 88 (Single Thread)	Time: 8.332s | 8332.0ms
-Test 88 (Multi Thread)	Time: 4.036s | 4036.0ms
-Test 89 (Single Thread)	Time: 8.417s | 8417.0ms
-Test 89 (Multi Thread)	Time: 3.826s | 3826.0ms
-Test 90 (Single Thread)	Time: 7.898s | 7898.0ms
-Test 90 (Multi Thread)	Time: 3.609s | 3609.0ms
-Test 91 (Single Thread)	Time: 7.807s | 7807.0ms
-Test 91 (Multi Thread)	Time: 4.036s | 4036.0ms
-Test 92 (Single Thread)	Time: 7.51s | 7510.0ms
-Test 92 (Multi Thread)	Time: 3.458s | 3458.0ms
-Test 93 (Single Thread)	Time: 7.518s | 7518.0ms
-Test 93 (Multi Thread)	Time: 4.268s | 4268.0ms
-Test 94 (Single Thread)	Time: 8.221s | 8221.0ms
-Test 94 (Multi Thread)	Time: 3.402s | 3402.0ms
-Test 95 (Single Thread)	Time: 8.103s | 8103.0ms
-Test 95 (Multi Thread)	Time: 3.615s | 3615.0ms
-Test 96 (Single Thread)	Time: 9.179s | 9179.0ms
-Test 96 (Multi Thread)	Time: 3.806s | 3806.0ms
-Test 97 (Single Thread)	Time: 8.315s | 8315.0ms
-Test 97 (Multi Thread)	Time: 3.481s | 3481.0ms
-Test 98 (Single Thread)	Time: 7.768s | 7768.0ms
-Test 98 (Multi Thread)	Time: 3.656s | 3656.0ms
-Test 99 (Single Thread)	Time: 7.942s | 7942.0ms
-Test 99 (Multi Thread)	Time: 3.536s | 3536.0ms
-Test 100 (Single Thread)	Time: 8.498s | 8498.0ms
-Test 100 (Multi Thread)	Time: 3.722s | 3722.0ms
-Average Single Thread Time: 8.838s | 8838.0ms
-Average Multi Thread Time: 3.81s | 3810.0ms
+Test (Array) 1 (Single Thread)	Time: 2.886s | 2886.0ms
+Test (Array) 1 (Multi Thread)	Time: 1.926s | 1926.0ms
+Test (ArrayList) 1 (Single Thread)	Time: 1.251s | 1251.0ms
+Test (ArrayList) 1 (Multi Thread)	Time: 1.68s | 1680.0ms
+Test (Array) 2 (Single Thread)	Time: 4.225s | 4225.0ms
+Test (Array) 2 (Multi Thread)	Time: 1.706s | 1706.0ms
+Test (ArrayList) 2 (Single Thread)	Time: 2.049s | 2049.0ms
+Test (ArrayList) 2 (Multi Thread)	Time: 1.965s | 1965.0ms
+Test (Array) 3 (Single Thread)	Time: 4.515s | 4515.0ms
+Test (Array) 3 (Multi Thread)	Time: 1.94s | 1940.0ms
+Test (ArrayList) 3 (Single Thread)	Time: 1.949s | 1949.0ms
+Test (ArrayList) 3 (Multi Thread)	Time: 1.717s | 1717.0ms
+Test (Array) 4 (Single Thread)	Time: 3.984s | 3984.0ms
+Test (Array) 4 (Multi Thread)	Time: 2.054s | 2054.0ms
+Test (ArrayList) 4 (Single Thread)	Time: 1.908s | 1908.0ms
+Test (ArrayList) 4 (Multi Thread)	Time: 1.789s | 1789.0ms
+Test (Array) 5 (Single Thread)	Time: 4.388s | 4388.0ms
+Test (Array) 5 (Multi Thread)	Time: 1.923s | 1923.0ms
+Test (ArrayList) 5 (Single Thread)	Time: 2.234s | 2234.0ms
+Test (ArrayList) 5 (Multi Thread)	Time: 1.785s | 1785.0ms
+Test (Array) 6 (Single Thread)	Time: 4.667s | 4667.0ms
+Test (Array) 6 (Multi Thread)	Time: 1.786s | 1786.0ms
+Test (ArrayList) 6 (Single Thread)	Time: 2.133s | 2133.0ms
+Test (ArrayList) 6 (Multi Thread)	Time: 1.767s | 1767.0ms
+Test (Array) 7 (Single Thread)	Time: 4.104s | 4104.0ms
+Test (Array) 7 (Multi Thread)	Time: 2.03s | 2030.0ms
+Test (ArrayList) 7 (Single Thread)	Time: 1.911s | 1911.0ms
+Test (ArrayList) 7 (Multi Thread)	Time: 1.902s | 1902.0ms
+Test (Array) 8 (Single Thread)	Time: 4.289s | 4289.0ms
+Test (Array) 8 (Multi Thread)	Time: 1.727s | 1727.0ms
+Test (ArrayList) 8 (Single Thread)	Time: 1.811s | 1811.0ms
+Test (ArrayList) 8 (Multi Thread)	Time: 1.521s | 1521.0ms
+Test (Array) 9 (Single Thread)	Time: 4.608s | 4608.0ms
+Test (Array) 9 (Multi Thread)	Time: 2.005s | 2005.0ms
+Test (ArrayList) 9 (Single Thread)	Time: 1.977s | 1977.0ms
+Test (ArrayList) 9 (Multi Thread)	Time: 1.447s | 1447.0ms
+Test (Array) 10 (Single Thread)	Time: 4.656s | 4656.0ms
+Test (Array) 10 (Multi Thread)	Time: 1.777s | 1777.0ms
+Test (ArrayList) 10 (Single Thread)	Time: 1.858s | 1858.0ms
+Test (ArrayList) 10 (Multi Thread)	Time: 1.614s | 1614.0ms
+Test (Array) 11 (Single Thread)	Time: 4.614s | 4614.0ms
+Test (Array) 11 (Multi Thread)	Time: 1.812s | 1812.0ms
+Test (ArrayList) 11 (Single Thread)	Time: 1.854s | 1854.0ms
+Test (ArrayList) 11 (Multi Thread)	Time: 1.718s | 1718.0ms
+Test (Array) 12 (Single Thread)	Time: 3.969s | 3969.0ms
+Test (Array) 12 (Multi Thread)	Time: 1.844s | 1844.0ms
+Test (ArrayList) 12 (Single Thread)	Time: 2.05s | 2050.0ms
+Test (ArrayList) 12 (Multi Thread)	Time: 1.587s | 1587.0ms
+Test (Array) 13 (Single Thread)	Time: 4.449s | 4449.0ms
+Test (Array) 13 (Multi Thread)	Time: 1.793s | 1793.0ms
+Test (ArrayList) 13 (Single Thread)	Time: 1.861s | 1861.0ms
+Test (ArrayList) 13 (Multi Thread)	Time: 1.72s | 1720.0ms
+Test (Array) 14 (Single Thread)	Time: 4.275s | 4275.0ms
+Test (Array) 14 (Multi Thread)	Time: 1.787s | 1787.0ms
+Test (ArrayList) 14 (Single Thread)	Time: 2.034s | 2034.0ms
+Test (ArrayList) 14 (Multi Thread)	Time: 1.821s | 1821.0ms
+Test (Array) 15 (Single Thread)	Time: 4.196s | 4196.0ms
+Test (Array) 15 (Multi Thread)	Time: 1.846s | 1846.0ms
+Test (ArrayList) 15 (Single Thread)	Time: 2.053s | 2053.0ms
+Test (ArrayList) 15 (Multi Thread)	Time: 1.641s | 1641.0ms
+Test (Array) 16 (Single Thread)	Time: 4.358s | 4358.0ms
+Test (Array) 16 (Multi Thread)	Time: 1.744s | 1744.0ms
+Test (ArrayList) 16 (Single Thread)	Time: 1.852s | 1852.0ms
+Test (ArrayList) 16 (Multi Thread)	Time: 1.694s | 1694.0ms
+Test (Array) 17 (Single Thread)	Time: 4.18s | 4180.0ms
+Test (Array) 17 (Multi Thread)	Time: 1.788s | 1788.0ms
+Test (ArrayList) 17 (Single Thread)	Time: 1.862s | 1862.0ms
+Test (ArrayList) 17 (Multi Thread)	Time: 1.725s | 1725.0ms
+Test (Array) 18 (Single Thread)	Time: 4.268s | 4268.0ms
+Test (Array) 18 (Multi Thread)	Time: 1.768s | 1768.0ms
+Test (ArrayList) 18 (Single Thread)	Time: 1.86s | 1860.0ms
+Test (ArrayList) 18 (Multi Thread)	Time: 1.698s | 1698.0ms
+Test (Array) 19 (Single Thread)	Time: 4.589s | 4589.0ms
+Test (Array) 19 (Multi Thread)	Time: 1.836s | 1836.0ms
+Test (ArrayList) 19 (Single Thread)	Time: 2.048s | 2048.0ms
+Test (ArrayList) 19 (Multi Thread)	Time: 1.785s | 1785.0ms
+Test (Array) 20 (Single Thread)	Time: 4.809s | 4809.0ms
+Test (Array) 20 (Multi Thread)	Time: 2.036s | 2036.0ms
+Test (ArrayList) 20 (Single Thread)	Time: 2.078s | 2078.0ms
+Test (ArrayList) 20 (Multi Thread)	Time: 1.812s | 1812.0ms
+Test (Array) 21 (Single Thread)	Time: 4.131s | 4131.0ms
+Test (Array) 21 (Multi Thread)	Time: 1.862s | 1862.0ms
+Test (ArrayList) 21 (Single Thread)	Time: 1.889s | 1889.0ms
+Test (ArrayList) 21 (Multi Thread)	Time: 1.503s | 1503.0ms
+Test (Array) 22 (Single Thread)	Time: 4.122s | 4122.0ms
+Test (Array) 22 (Multi Thread)	Time: 1.83s | 1830.0ms
+Test (ArrayList) 22 (Single Thread)	Time: 1.887s | 1887.0ms
+Test (ArrayList) 22 (Multi Thread)	Time: 1.731s | 1731.0ms
+Test (Array) 23 (Single Thread)	Time: 4.745s | 4745.0ms
+Test (Array) 23 (Multi Thread)	Time: 1.746s | 1746.0ms
+Test (ArrayList) 23 (Single Thread)	Time: 1.883s | 1883.0ms
+Test (ArrayList) 23 (Multi Thread)	Time: 1.756s | 1756.0ms
+Test (Array) 24 (Single Thread)	Time: 4.728s | 4728.0ms
+Test (Array) 24 (Multi Thread)	Time: 1.829s | 1829.0ms
+Test (ArrayList) 24 (Single Thread)	Time: 2.076s | 2076.0ms
+Test (ArrayList) 24 (Multi Thread)	Time: 1.664s | 1664.0ms
+Test (Array) 25 (Single Thread)	Time: 4.2s | 4200.0ms
+Test (Array) 25 (Multi Thread)	Time: 1.669s | 1669.0ms
+Test (ArrayList) 25 (Single Thread)	Time: 1.889s | 1889.0ms
+Test (ArrayList) 25 (Multi Thread)	Time: 1.802s | 1802.0ms
+Test (Array) 26 (Single Thread)	Time: 4.059s | 4059.0ms
+Test (Array) 26 (Multi Thread)	Time: 1.803s | 1803.0ms
+Test (ArrayList) 26 (Single Thread)	Time: 1.892s | 1892.0ms
+Test (ArrayList) 26 (Multi Thread)	Time: 1.534s | 1534.0ms
+Test (Array) 27 (Single Thread)	Time: 4.125s | 4125.0ms
+Test (Array) 27 (Multi Thread)	Time: 1.683s | 1683.0ms
+Test (ArrayList) 27 (Single Thread)	Time: 2.084s | 2084.0ms
+Test (ArrayList) 27 (Multi Thread)	Time: 1.751s | 1751.0ms
+Test (Array) 28 (Single Thread)	Time: 4.767s | 4767.0ms
+Test (Array) 28 (Multi Thread)	Time: 1.856s | 1856.0ms
+Test (ArrayList) 28 (Single Thread)	Time: 1.883s | 1883.0ms
+Test (ArrayList) 28 (Multi Thread)	Time: 1.797s | 1797.0ms
+Test (Array) 29 (Single Thread)	Time: 4.02s | 4020.0ms
+Test (Array) 29 (Multi Thread)	Time: 1.935s | 1935.0ms
+Test (ArrayList) 29 (Single Thread)	Time: 2.071s | 2071.0ms
+Test (ArrayList) 29 (Multi Thread)	Time: 1.687s | 1687.0ms
+Test (Array) 30 (Single Thread)	Time: 4.034s | 4034.0ms
+Test (Array) 30 (Multi Thread)	Time: 1.854s | 1854.0ms
+Test (ArrayList) 30 (Single Thread)	Time: 2.076s | 2076.0ms
+Test (ArrayList) 30 (Multi Thread)	Time: 1.745s | 1745.0ms
+Test (Array) 31 (Single Thread)	Time: 4.039s | 4039.0ms
+Test (Array) 31 (Multi Thread)	Time: 2.071s | 2071.0ms
+Test (ArrayList) 31 (Single Thread)	Time: 2.073s | 2073.0ms
+Test (ArrayList) 31 (Multi Thread)	Time: 1.683s | 1683.0ms
+Test (Array) 32 (Single Thread)	Time: 4.042s | 4042.0ms
+Test (Array) 32 (Multi Thread)	Time: 1.859s | 1859.0ms
+Test (ArrayList) 32 (Single Thread)	Time: 2.071s | 2071.0ms
+Test (ArrayList) 32 (Multi Thread)	Time: 1.732s | 1732.0ms
+Test (Array) 33 (Single Thread)	Time: 4.713s | 4713.0ms
+Test (Array) 33 (Multi Thread)	Time: 1.814s | 1814.0ms
+Test (ArrayList) 33 (Single Thread)	Time: 1.876s | 1876.0ms
+Test (ArrayList) 33 (Multi Thread)	Time: 1.641s | 1641.0ms
+Test (Array) 34 (Single Thread)	Time: 4.138s | 4138.0ms
+Test (Array) 34 (Multi Thread)	Time: 1.864s | 1864.0ms
+Test (ArrayList) 34 (Single Thread)	Time: 1.886s | 1886.0ms
+Test (ArrayList) 34 (Multi Thread)	Time: 1.812s | 1812.0ms
+Test (Array) 35 (Single Thread)	Time: 4.901s | 4901.0ms
+Test (Array) 35 (Multi Thread)	Time: 1.807s | 1807.0ms
+Test (ArrayList) 35 (Single Thread)	Time: 1.885s | 1885.0ms
+Test (ArrayList) 35 (Multi Thread)	Time: 1.623s | 1623.0ms
+Test (Array) 36 (Single Thread)	Time: 4.724s | 4724.0ms
+Test (Array) 36 (Multi Thread)	Time: 1.854s | 1854.0ms
+Test (ArrayList) 36 (Single Thread)	Time: 2.554s | 2554.0ms
+Test (ArrayList) 36 (Multi Thread)	Time: 1.645s | 1645.0ms
+Test (Array) 37 (Single Thread)	Time: 4.652s | 4652.0ms
+Test (Array) 37 (Multi Thread)	Time: 1.857s | 1857.0ms
+Test (ArrayList) 37 (Single Thread)	Time: 1.845s | 1845.0ms
+Test (ArrayList) 37 (Multi Thread)	Time: 1.622s | 1622.0ms
+Test (Array) 38 (Single Thread)	Time: 4.649s | 4649.0ms
+Test (Array) 38 (Multi Thread)	Time: 1.737s | 1737.0ms
+Test (ArrayList) 38 (Single Thread)	Time: 1.845s | 1845.0ms
+Test (ArrayList) 38 (Multi Thread)	Time: 1.528s | 1528.0ms
+Test (Array) 39 (Single Thread)	Time: 4.63s | 4630.0ms
+Test (Array) 39 (Multi Thread)	Time: 1.862s | 1862.0ms
+Test (ArrayList) 39 (Single Thread)	Time: 1.843s | 1843.0ms
+Test (ArrayList) 39 (Multi Thread)	Time: 1.581s | 1581.0ms
+Test (Array) 40 (Single Thread)	Time: 4.145s | 4145.0ms
+Test (Array) 40 (Multi Thread)	Time: 1.796s | 1796.0ms
+Test (ArrayList) 40 (Single Thread)	Time: 1.948s | 1948.0ms
+Test (ArrayList) 40 (Multi Thread)	Time: 1.481s | 1481.0ms
+Test (Array) 41 (Single Thread)	Time: 4.774s | 4774.0ms
+Test (Array) 41 (Multi Thread)	Time: 1.927s | 1927.0ms
+Test (ArrayList) 41 (Single Thread)	Time: 1.899s | 1899.0ms
+Test (ArrayList) 41 (Multi Thread)	Time: 1.729s | 1729.0ms
+Test (Array) 42 (Single Thread)	Time: 4.164s | 4164.0ms
+Test (Array) 42 (Multi Thread)	Time: 1.866s | 1866.0ms
+Test (ArrayList) 42 (Single Thread)	Time: 1.952s | 1952.0ms
+Test (ArrayList) 42 (Multi Thread)	Time: 1.86s | 1860.0ms
+Test (Array) 43 (Single Thread)	Time: 4.361s | 4361.0ms
+Test (Array) 43 (Multi Thread)	Time: 1.867s | 1867.0ms
+Test (ArrayList) 43 (Single Thread)	Time: 1.884s | 1884.0ms
+Test (ArrayList) 43 (Multi Thread)	Time: 1.746s | 1746.0ms
+Test (Array) 44 (Single Thread)	Time: 4.338s | 4338.0ms
+Test (Array) 44 (Multi Thread)	Time: 1.761s | 1761.0ms
+Test (ArrayList) 44 (Single Thread)	Time: 1.884s | 1884.0ms
+Test (ArrayList) 44 (Multi Thread)	Time: 1.761s | 1761.0ms
+Test (Array) 45 (Single Thread)	Time: 4.255s | 4255.0ms
+Test (Array) 45 (Multi Thread)	Time: 1.902s | 1902.0ms
+Test (ArrayList) 45 (Single Thread)	Time: 2.156s | 2156.0ms
+Test (ArrayList) 45 (Multi Thread)	Time: 1.867s | 1867.0ms
+Test (Array) 46 (Single Thread)	Time: 4.328s | 4328.0ms
+Test (Array) 46 (Multi Thread)	Time: 1.875s | 1875.0ms
+Test (ArrayList) 46 (Single Thread)	Time: 1.888s | 1888.0ms
+Test (ArrayList) 46 (Multi Thread)	Time: 1.817s | 1817.0ms
+Test (Array) 47 (Single Thread)	Time: 4.791s | 4791.0ms
+Test (Array) 47 (Multi Thread)	Time: 1.868s | 1868.0ms
+Test (ArrayList) 47 (Single Thread)	Time: 1.961s | 1961.0ms
+Test (ArrayList) 47 (Multi Thread)	Time: 1.92s | 1920.0ms
+Test (Array) 48 (Single Thread)	Time: 4.887s | 4887.0ms
+Test (Array) 48 (Multi Thread)	Time: 1.867s | 1867.0ms
+Test (ArrayList) 48 (Single Thread)	Time: 1.884s | 1884.0ms
+Test (ArrayList) 48 (Multi Thread)	Time: 1.734s | 1734.0ms
+Test (Array) 49 (Single Thread)	Time: 4.382s | 4382.0ms
+Test (Array) 49 (Multi Thread)	Time: 1.795s | 1795.0ms
+Test (ArrayList) 49 (Single Thread)	Time: 1.888s | 1888.0ms
+Test (ArrayList) 49 (Multi Thread)	Time: 1.728s | 1728.0ms
+Test (Array) 50 (Single Thread)	Time: 4.409s | 4409.0ms
+Test (Array) 50 (Multi Thread)	Time: 1.908s | 1908.0ms
+Test (ArrayList) 50 (Single Thread)	Time: 1.877s | 1877.0ms
+Test (ArrayList) 50 (Multi Thread)	Time: 1.825s | 1825.0ms
+Average Single Thread Time (Arrays): 4.365s | 4365.0ms
+Average Multi Thread Time (Arrays): 1.847s | 1847.0ms
+Average Single Thread Time (ArrayList): 1.947s | 1947.0ms
+Average Multi Thread Time (ArrayList): 1.713s | 1713.0ms
+Total time to run all tests for single thread: 218.282s | 
+Total time to run all tests for multi thread: 92.352s | 

@@ -1,25 +1,88 @@
 import java.util.*;
 class fractionalKnapsack {
-    
+    MultiMerge<Item> sorter = new MultiMerge<Item>();
     public static void main(String[] args){
-        MultiMerge<Item> sorter = new MultiMerge<Item>();
+        fractionalKnapsack kp = new fractionalKnapsack();
         Item[] items = new Item[10000000];
+        ArrayList<Item> items2 = new ArrayList<Item>();
         Random random = new Random();
         for(int i = 0; i < 10000000; i++){
-            items[i] = new Item(random.nextInt(29) + 1, random.nextInt(29) + 1);
+            Item obj = new Item(random.nextInt(59) + 1, random.nextInt(29) + 1);
+            items[i] = obj;
+            items2.add(obj);
         }
         int cap = 100000;
         //System.out.println(items);
-        System.out.println(items);
+        System.out.println(items.toString());
         long start = System.currentTimeMillis();
         singleThreadFractionalKnapsack(items, cap);
         long end = System.currentTimeMillis();
-        System.out.println("Single Thread: " + (end - start));
+        System.out.println("Single Thread array: " + (end - start));
         Collections.shuffle(Arrays.asList(items));
         start = System.currentTimeMillis();
-        sorter.sort(items, 8);
+        kp.sorter.sort(items, 8);
         end = System.currentTimeMillis();
-        System.out.println("Eight Thread: " + (end - start));
+        System.out.println("Eight Thread array: " + (end - start));
+        start = System.currentTimeMillis();
+        kp.singleThreadFractionalKnapsack(items2, cap);
+        end = System.currentTimeMillis();
+        System.out.println("Single Thread arraylist: " + (end - start));
+        Collections.shuffle(items2);
+        start = System.currentTimeMillis();
+        kp.nThreadKnapsack(items2, cap, 8);
+        end = System.currentTimeMillis();
+        System.out.println("Eight Thread arraylist: " + (end - start));
+
+    }
+    // arraylist implementation of fractionalknapsack
+    public float singleThreadFractionalKnapsack(ArrayList<Item> items, int capacity){
+        float totalValue = 0;
+        int cap = capacity;
+        // sort the arraylist
+        Collections.sort(items);
+
+        for(Item item: items){
+            int currentWeight = item.weight;
+            int currentVal = item.value;
+
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
+                totalValue += currentVal;
+            }
+            else{
+                float fraction = (float)cap/(float)currentWeight;
+                totalValue += (currentVal*fraction);
+                cap = (int)(cap - (currentWeight*fraction));
+                break;
+            }
+        }
+
+        return totalValue;
+    }
+    // n thread implementation
+    public float nThreadKnapsack(ArrayList<Item> items, int capacity, int threads){
+        float totalValue = 0;
+        int cap = capacity;
+        // sort the arraylist
+        sorter.sort(items, threads);
+
+        for(Item item: items){
+            int currentWeight = item.weight;
+            int currentVal = item.value;
+
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
+                totalValue += currentVal;
+            }
+            else{
+                float fraction = (float)cap/(float)currentWeight;
+                totalValue += (currentVal*fraction);
+                cap = (int)(cap - (currentWeight*fraction));
+                break;
+            }
+        }
+
+        return totalValue;
     }
     // since java arrays library doesnt have mergesort, we will use this
     public static <T extends Comparable<T>> void mergeSort(T[] array) 
@@ -80,8 +143,8 @@ class fractionalKnapsack {
             resultIndex++;
         }
     }
-    public static double singleThreadFractionalKnapsack(Item[] items, int capacity){
-        double value = 0.0;
+    public static float singleThreadFractionalKnapsack(Item[] items, int capacity){
+        float value = 0;
         int cap = capacity;
         //MultiMerge<Item> sorter = new MultiMerge<Item>();
         // 1 threaded merge sort
@@ -96,7 +159,7 @@ class fractionalKnapsack {
                 value += currentVal;
             }
             else{
-                double fraction = (double)cap/(double)currentWeight;
+                float fraction = (float)cap/(float)currentWeight;
                 value += (currentVal*fraction);
                 cap = (int)(cap - (currentWeight*fraction));
                 break;
@@ -105,10 +168,9 @@ class fractionalKnapsack {
         return value;
     }
 
-    public static double nThreadKnapsack(Item[] items, int capacity, int threads){
-        double value = 0.0;
+    public float nThreadKnapsack(Item[] items, int capacity, int threads){
+        float value = 0;
         int cap = capacity;
-        MultiMerge<Item> sorter = new MultiMerge<Item>();
         // 8 threaded merge sort
         sorter.sort(items, threads);
 
@@ -121,7 +183,7 @@ class fractionalKnapsack {
                 value += currentVal;
             }
             else{
-                double fraction = (double)cap/(double)currentWeight;
+                float fraction = (float)cap/(float)currentWeight;
                 value += (currentVal*fraction);
                 cap = (int)(cap - (currentWeight*fraction));
                 break;

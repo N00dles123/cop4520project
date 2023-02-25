@@ -4,15 +4,15 @@
 public class Item implements Comparable<Item>{
     int value;
     int weight;
-    double cost;
+    float cost;
     public Item(int value, int weight){
         this.value = value;
         this.weight = weight;
-        cost = value/(double)weight;
+        cost = value/(float)weight;
     }
     @Override
     public int compareTo(Item other){
-        return Double.compare(other.cost, this.cost);
+        return Float.compare(other.cost, this.cost);
     }
     public String toString(){
         return "" + cost + "";

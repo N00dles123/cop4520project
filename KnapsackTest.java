@@ -24,52 +24,93 @@ public class KnapsackTest {
                         "\nNUMBER OF THREADS: " + NUM_THREADS + " | KNAPSACK CAPACITY: " + CAPACITY);
         // now create giant array of items to test
         Item[] items = new Item[ARRAY_SIZE];
+        ArrayList<Item> itemsList = new ArrayList<Item>();
+
         Random random = new Random();
         KnapsackTest kt = new KnapsackTest();
         for(int i = 0; i < ARRAY_SIZE; i++){
-            items[i] = new Item(random.nextInt(29) + 1, random.nextInt(29) + 1);
+            Item item = new Item(random.nextInt(89) + 1, random.nextInt(29) + 1);
+            items[i] = item;
+            itemsList.add(item);
         }
 
         // keep running sum of total time taken
         long singleThreadTotalTime = 0;
         long multiThreadTotalTime = 0;
+        long singleThreadTotalTimeList = 0;
+        long multiThreadTotalTimeList = 0;
         for(int i = 0; i < NUM_TESTS; i++){
             //ArrayList<Item> copy = (ArrayList<Item>) items.clone();
             // run single thread
             long singleThread = kt.singleKnapsackTime(items, CAPACITY);
             singleThreadTotalTime += singleThread;
-            System.out.println("Test " + (i+1) + " (Single Thread)\tTime: " + singleThread / 1000.0 + "s | " + singleThread / 1.0 + "ms");
+            System.out.println("Test (Array) " + (i+1) + " (Single Thread)\tTime: " + singleThread / 1000.0 + "s | " + singleThread / 1.0 + "ms");
             Collections.shuffle(Arrays.asList(items)); // shuffle array
             // run multi thread
             long multiThread = kt.threadedKnapsackTime(NUM_THREADS, items, CAPACITY);
             multiThreadTotalTime += multiThread;
-            System.out.println("Test " + (i+1) + " (Multi Thread)\tTime: " + multiThread / 1000.0 + "s | " + multiThread / 1.0 + "ms");
+            System.out.println("Test (Array) " + (i+1) + " (Multi Thread)\tTime: " + multiThread / 1000.0 + "s | " + multiThread / 1.0 + "ms");
             Collections.shuffle(Arrays.asList(items));
+
+            // run single thread
+            long singleThreadList = kt.singleKnapsackTime(itemsList, CAPACITY);
+            singleThreadTotalTimeList += singleThreadList;
+            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: " + singleThreadList / 1000.0 + "s | " + singleThreadList / 1.0 + "ms");
+            Collections.shuffle(itemsList); // shuffle array
+
+            // run multi thread
+            long multiThreadList = kt.threadedKnapsackTime(NUM_THREADS, itemsList, CAPACITY);
+            multiThreadTotalTimeList += multiThreadList;
+            System.out.println("Test (ArrayList) " + (i+1) + " (Multi Thread)\tTime: " + multiThreadList / 1000.0 + "s | " + multiThreadList / 1.0 + "ms");
+            Collections.shuffle(itemsList);
+
         }
 
         double singleThreadAverage = singleThreadTotalTime / NUM_TESTS / 1.0;
         double multiThreadAverage = multiThreadTotalTime / NUM_TESTS / 1.0;
+        double singleThreadListAverage = singleThreadTotalTimeList / NUM_TESTS / 1.0;
+        double multiThreadListAverage = multiThreadTotalTimeList / NUM_TESTS / 1.0;
         double singleThreadAverageSeconds = singleThreadAverage / 1000.0;
         double multiThreadAverageSeconds = multiThreadAverage / 1000.0;
-        System.out.println("Average Single Thread Time: " + singleThreadAverageSeconds + "s | " + singleThreadAverage + "ms");
-        System.out.println("Average Multi Thread Time: " + multiThreadAverageSeconds + "s | " + multiThreadAverage + "ms");
+        double singleThreadListAverageSeconds = singleThreadListAverage / 1000.0;
+        double multiThreadListAverageSeconds = multiThreadListAverage / 1000.0;
+        System.out.println("Average Single Thread Time (Arrays): " + singleThreadAverageSeconds + "s | " + singleThreadAverage + "ms");
+        System.out.println("Average Multi Thread Time (Arrays): " + multiThreadAverageSeconds + "s | " + multiThreadAverage + "ms");
+        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverageSeconds + "s | " + singleThreadListAverage + "ms");
+        System.out.println("Average Multi Thread Time (ArrayList): " + multiThreadListAverageSeconds + "s | " + multiThreadListAverage + "ms");
         System.out.println("Total time to run all tests for single thread: " + singleThreadTotalTime / 1000.0 + "s | ");
         System.out.println("Total time to run all tests for multi thread: " + multiThreadTotalTime / 1000.0 + "s | ");
 
     }
     // this method will run the knapsack algorithm and return the time it took to run needs some fixing
     private long threadedKnapsackTime(int numThreads, Item[] items, int capacity){
-        double threadValue = 0;
+        float threadValue = 0;
         long startTime = System.currentTimeMillis();
-        threadValue = fractionalKnapsack.nThreadKnapsack(items, capacity, numThreads);
+        threadValue = kp.nThreadKnapsack(items, capacity, numThreads);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
     }
 
     private long singleKnapsackTime(Item[] items, int capacity){
-        double threadValue = 0;
+        float threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = fractionalKnapsack.singleThreadFractionalKnapsack(items, capacity);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+    private long singleKnapsackTime(ArrayList<Item> items, int capacity){
+        float threadValue = 0;
+        long startTime = System.currentTimeMillis();
+        threadValue = kp.singleThreadFractionalKnapsack(items, capacity);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+    private long threadedKnapsackTime(int numThreads, ArrayList<Item> items, int capacity){
+        float threadValue = 0;
+        long startTime = System.currentTimeMillis();
+        threadValue = kp.nThreadKnapsack(items, capacity, numThreads);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
     }
