@@ -1,4 +1,5 @@
 import java.util.*;
+
 class fractionalKnapsack {
     MultiMerge<Item> sorter = new MultiMerge<Item>();
     public static void main(String[] args){
@@ -13,7 +14,7 @@ class fractionalKnapsack {
         }
         int cap = 100000;
         //System.out.println(items);
-        System.out.println(items.toString());
+        //System.out.println(Arrays.toString(items));
         long start = System.currentTimeMillis();
         singleThreadFractionalKnapsack(items, cap);
         long end = System.currentTimeMillis();
