@@ -23,13 +23,13 @@ public class KnapsackTest {
         System.out.println("ARRAY SIZE: " + ARRAY_SIZE + " | NUMBER OF TESTS: " + NUM_TESTS + 
                         "\nNUMBER OF THREADS: " + NUM_THREADS + " | KNAPSACK CAPACITY: " + CAPACITY);
         // now create giant array of items to test
-        Item[] items = new Item[ARRAY_SIZE];
-        ArrayList<Item> itemsList = new ArrayList<Item>();
+        Obj[] items = new Obj[ARRAY_SIZE];
+        ArrayList<Obj> itemsList = new ArrayList<Obj>();
 
         Random random = new Random();
         KnapsackTest kt = new KnapsackTest();
         for(int i = 0; i < ARRAY_SIZE; i++){
-            Item item = new Item(random.nextInt(89) + 1, random.nextInt(29) + 1);
+            Obj item = new Obj(random.nextInt(89) + 1, random.nextInt(29) + 1);
             items[i] = item;
             itemsList.add(item);
         }
@@ -83,7 +83,7 @@ public class KnapsackTest {
 
     }
     // this method will run the knapsack algorithm and return the time it took to run needs some fixing
-    private long threadedKnapsackTime(int numThreads, Item[] items, int capacity){
+    private long threadedKnapsackTime(int numThreads, Obj[] items, int capacity){
         float threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = kp.nThreadKnapsack(items, capacity, numThreads);
@@ -91,7 +91,7 @@ public class KnapsackTest {
         return (endTime - startTime);
     }
 
-    private long singleKnapsackTime(Item[] items, int capacity){
+    private long singleKnapsackTime(Obj[] items, int capacity){
         float threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = fractionalKnapsack.singleThreadFractionalKnapsack(items, capacity);
@@ -99,7 +99,7 @@ public class KnapsackTest {
         return (endTime - startTime);
     }
 
-    private long singleKnapsackTime(ArrayList<Item> items, int capacity){
+    private long singleKnapsackTime(ArrayList<Obj> items, int capacity){
         float threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = kp.singleThreadFractionalKnapsack(items, capacity);
@@ -107,7 +107,7 @@ public class KnapsackTest {
         return (endTime - startTime);
     }
 
-    private long threadedKnapsackTime(int numThreads, ArrayList<Item> items, int capacity){
+    private long threadedKnapsackTime(int numThreads, ArrayList<Obj> items, int capacity){
         float threadValue = 0;
         long startTime = System.currentTimeMillis();
         threadValue = kp.nThreadKnapsack(items, capacity, numThreads);

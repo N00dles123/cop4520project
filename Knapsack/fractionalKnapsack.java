@@ -1,14 +1,14 @@
 import java.util.*;
 
 class fractionalKnapsack {
-    MultiMerge<Item> sorter = new MultiMerge<Item>();
+    MultiMerge<Obj> sorter = new MultiMerge<Obj>();
     public static void main(String[] args){
         fractionalKnapsack kp = new fractionalKnapsack();
-        Item[] items = new Item[10000000];
-        ArrayList<Item> items2 = new ArrayList<Item>();
+        Obj[] items = new Obj[10000000];
+        ArrayList<Obj> items2 = new ArrayList<Obj>();
         Random random = new Random();
         for(int i = 0; i < 10000000; i++){
-            Item obj = new Item(random.nextInt(59) + 1, random.nextInt(29) + 1);
+            Obj obj = new Obj(random.nextInt(59) + 1, random.nextInt(29) + 1);
             items[i] = obj;
             items2.add(obj);
         }
@@ -36,13 +36,13 @@ class fractionalKnapsack {
 
     }
     // arraylist implementation of fractionalknapsack
-    public float singleThreadFractionalKnapsack(ArrayList<Item> items, int capacity){
+    public float singleThreadFractionalKnapsack(ArrayList<Obj> items, int capacity){
         float totalValue = 0;
         int cap = capacity;
         // sort the arraylist
-        Collections.sort(items);
+        fractionalKnapsack.mergeSort(items);
 
-        for(Item item: items){
+        for(Obj item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
@@ -61,13 +61,13 @@ class fractionalKnapsack {
         return totalValue;
     }
     // n thread implementation
-    public float nThreadKnapsack(ArrayList<Item> items, int capacity, int threads){
+    public float nThreadKnapsack(ArrayList<Obj> items, int capacity, int threads){
         float totalValue = 0;
         int cap = capacity;
         // sort the arraylist
         sorter.sort(items, threads);
 
-        for(Item item: items){
+        for(Obj item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
@@ -103,7 +103,6 @@ class fractionalKnapsack {
         // Merge algorithm to combine the smaller subarrays into a larger sorted array
         merge(leftArray, rightArray, array);
     }
-
     private static <T extends Comparable<T>> void merge(T[] leftArray, T[] rightArray, T[] resultArray) 
     {
         // Start by initializing all indices to 0 at first
@@ -144,14 +143,14 @@ class fractionalKnapsack {
             resultIndex++;
         }
     }
-    public static float singleThreadFractionalKnapsack(Item[] items, int capacity){
+    public static float singleThreadFractionalKnapsack(Obj[] items, int capacity){
         float value = 0;
         int cap = capacity;
         //MultiMerge<Item> sorter = new MultiMerge<Item>();
         // 1 threaded merge sort
         mergeSort(items);
         
-        for(Item item: items){
+        for(Obj item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
@@ -169,13 +168,13 @@ class fractionalKnapsack {
         return value;
     }
 
-    public float nThreadKnapsack(Item[] items, int capacity, int threads){
+    public float nThreadKnapsack(Obj[] items, int capacity, int threads){
         float value = 0;
         int cap = capacity;
         // 8 threaded merge sort
         sorter.sort(items, threads);
 
-        for(Item item: items){
+        for(Obj item: items){
             int currentWeight = item.weight;
             int currentVal = item.value;
 
@@ -194,5 +193,63 @@ class fractionalKnapsack {
         
         return value;
     }
-}
 
+    public static <T extends Comparable<T>> void mergeSort(List<T> list) 
+    {
+        // Base case, return when the array length is 1
+        if (list == null || list.size() < 2) return;
+
+        // Compute the midpoint and split the array into two
+        int mid = list.size() / 2;
+        List<T> leftList = new ArrayList<>(list.subList(0, mid));
+        List<T> rightList = new ArrayList<>(list.subList(mid, list.size()));
+
+        // Recursively split the arrays
+        mergeSort(leftList);
+        mergeSort(rightList);
+
+        // Merge algorithm to combine the smaller subarrays into a larger sorted array
+        merge(leftList, rightList, list);
+    }
+
+    private static <T extends Comparable<T>> void merge(List<T> leftList, List<T> rightList, List<T> resultList) 
+    {
+        // Start by initializing all indices to 0 at first
+        int leftIndex = 0, rightIndex = 0, resultIndex = 0;
+        
+        // Merge the left and right array into the resulting array
+        // keep going until we reach the end of one of the arrays
+        while (leftIndex < leftList.size() && rightIndex < rightList.size()) 
+        {
+            // If the element from the left is smaller, take it and add it to the resulting array
+            if (leftList.get(leftIndex).compareTo(rightList.get(rightIndex)) <= 0) 
+            {
+                resultList.set(resultIndex, leftList.get(leftIndex));
+                leftIndex++;
+            } 
+            // Otherwise, take the element from the right array and add it to the resulting array
+            else 
+            {
+                resultList.set(resultIndex, rightList.get(rightIndex));
+                rightIndex++;
+            }
+            resultIndex++; // move to the next spot
+        }
+        // if we still have elements remaining in the left array, add them
+        // if we hit this while loop, it means the right array is fully exhausted
+        while (leftIndex < leftList.size()) 
+        {
+            resultList.set(resultIndex, leftList.get(leftIndex));
+            leftIndex++;
+            resultIndex++;
+        }
+        // If we still have elements remaining in the right array, add them
+        // if we hit this while loop, it means the left array is fully exhausted
+        while (rightIndex < rightList.size()) 
+        {
+            resultList.set(resultIndex, rightList.get(rightIndex));
+            rightIndex++;
+            resultIndex++;
+        }
+    }
+}
