@@ -35,6 +35,58 @@ class fractionalKnapsack {
         System.out.println("Eight Thread arraylist: " + (end - start));
 
     }
+    // knapsack for arrays
+    public static float singleThreadFractionalKnapsack(Obj[] items, int capacity){
+        float value = 0;
+        int cap = capacity;
+        //MultiMerge<Item> sorter = new MultiMerge<Item>();
+        // 1 threaded merge sort
+        mergeSort(items);
+        
+        for(Obj item: items){
+            int currentWeight = item.weight;
+            int currentVal = item.value;
+
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
+                value += currentVal;
+            }
+            else{
+                float fraction = (float)cap/(float)currentWeight;
+                value += (currentVal*fraction);
+                cap = (int)(cap - (currentWeight*fraction));
+                break;
+            }
+        }
+        return value;
+    }
+
+    public float nThreadKnapsack(Obj[] items, int capacity, int threads){
+        float value = 0;
+        int cap = capacity;
+        // 8 threaded merge sort
+        sorter.sort(items, threads);
+
+        for(Obj item: items){
+            int currentWeight = item.weight;
+            int currentVal = item.value;
+
+            if(cap - currentWeight >= 0){
+                cap -= currentWeight;
+                value += currentVal;
+            }
+            else{
+                float fraction = (float)cap/(float)currentWeight;
+                value += (currentVal*fraction);
+                cap = (int)(cap - (currentWeight*fraction));
+                break;
+            }
+        }
+
+        
+        return value;
+    }
+
     // arraylist implementation of fractionalknapsack
     public float singleThreadFractionalKnapsack(ArrayList<Obj> items, int capacity){
         float totalValue = 0;
@@ -60,7 +112,7 @@ class fractionalKnapsack {
 
         return totalValue;
     }
-    // n thread implementation
+    // n thread implementation of arraylist
     public float nThreadKnapsack(ArrayList<Obj> items, int capacity, int threads){
         float totalValue = 0;
         int cap = capacity;
@@ -143,57 +195,7 @@ class fractionalKnapsack {
             resultIndex++;
         }
     }
-    public static float singleThreadFractionalKnapsack(Obj[] items, int capacity){
-        float value = 0;
-        int cap = capacity;
-        //MultiMerge<Item> sorter = new MultiMerge<Item>();
-        // 1 threaded merge sort
-        mergeSort(items);
-        
-        for(Obj item: items){
-            int currentWeight = item.weight;
-            int currentVal = item.value;
-
-            if(cap - currentWeight >= 0){
-                cap -= currentWeight;
-                value += currentVal;
-            }
-            else{
-                float fraction = (float)cap/(float)currentWeight;
-                value += (currentVal*fraction);
-                cap = (int)(cap - (currentWeight*fraction));
-                break;
-            }
-        }
-        return value;
-    }
-
-    public float nThreadKnapsack(Obj[] items, int capacity, int threads){
-        float value = 0;
-        int cap = capacity;
-        // 8 threaded merge sort
-        sorter.sort(items, threads);
-
-        for(Obj item: items){
-            int currentWeight = item.weight;
-            int currentVal = item.value;
-
-            if(cap - currentWeight >= 0){
-                cap -= currentWeight;
-                value += currentVal;
-            }
-            else{
-                float fraction = (float)cap/(float)currentWeight;
-                value += (currentVal*fraction);
-                cap = (int)(cap - (currentWeight*fraction));
-                break;
-            }
-        }
-
-        
-        return value;
-    }
-
+    
     public static <T extends Comparable<T>> void mergeSort(List<T> list) 
     {
         // Base case, return when the array length is 1
@@ -211,7 +213,7 @@ class fractionalKnapsack {
         // Merge algorithm to combine the smaller subarrays into a larger sorted array
         merge(leftList, rightList, list);
     }
-
+    // mergesort for arraylists
     private static <T extends Comparable<T>> void merge(List<T> leftList, List<T> rightList, List<T> resultList) 
     {
         // Start by initializing all indices to 0 at first
