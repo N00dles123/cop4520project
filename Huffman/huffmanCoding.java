@@ -4,11 +4,13 @@ public class huffmanCoding {
 
     static MultiMerge<Node> sorter = new MultiMerge<Node>();
 
+    // implement huffman tree creation
     public static void buildHuffmanTree(String inputText, Integer nThreads) {
         if (inputText == null || inputText.length() == 0) {
             return;
         }
 
+        // create a map of the chars in the string and its corresponding frequency
         Map<Character, Integer> freq = new HashMap<>();
         for (int i = 0; i < inputText.length(); i++) {
             char c = inputText.charAt(i);
@@ -20,6 +22,7 @@ public class huffmanCoding {
             }
         }
 
+        // create an ArrayList and store the nodes
         ArrayList<Node> nodes = new ArrayList<>();
         Iterator<Map.Entry<Character, Integer>> iterator = freq.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -30,19 +33,24 @@ public class huffmanCoding {
             nodes.add(node);
         }
 
+        // sort the ArrayList
         if(nThreads == 1)
         {
+            // regular merge sort
             huffmanCoding.mergeSort(nodes);
         }
         else if(nThreads == 8)
         {
+            // 8 threads
             sorter.sort(nodes, 8);
         }
         else if(nThreads == 16)
         {
+            // 16 threads
             sorter.sort(nodes, 16);
         }
 
+        // build huffman tree
         while (nodes.size() > 1) {
             Node left = nodes.remove(0);
             Node right = nodes.remove(0);
@@ -51,22 +59,24 @@ public class huffmanCoding {
             nodes.add(newNode);
         }
 
-        Node root = nodes.get(0);
 
+        // build the encoding of the string
+        Node root = nodes.get(0);
         Map<Character, String> codes = new HashMap<>();
         encodeData(root, "", codes);
-
         StringBuilder encodedString = new StringBuilder();
         for (char c: inputText.toCharArray()) {
             encodedString.append(codes.get(c));
         }
 
+        // these lines are commented for less visual pollution
         // System.out.println("Huffman Codes: " + codes);
         // System.out.println("Input string: " + inputText);
         // System.out.println("Encoded string: " + encodedString);
 
     }
 
+    // implement encoding of the string
     public static void encodeData(Node root, String str, Map<Character, String> codes) {
         if (root == null) {
             return;
@@ -86,6 +96,7 @@ public class huffmanCoding {
         encodeData(root.right, str + '1', codes);
     }
 
+    // implement regular merge sort in ArrayList
     public static void mergeSort(ArrayList<Node> nodes) {
         if (nodes == null || nodes.size() < 2) {
             return;
@@ -101,6 +112,7 @@ public class huffmanCoding {
         merge(leftArray, rightArray, nodes);
     }
 
+    // implement merge function for ArrayList
     public static void merge(ArrayList<Node> leftArray, ArrayList<Node> rightArray, ArrayList<Node> nodes)
     {
         int leftIndex = 0;
@@ -131,6 +143,7 @@ public class huffmanCoding {
         }
     }
 
+    // implement a random string generator
     public static String generateRandomString(int length) {
         String alphanumericCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuv'1234567890/+-_*()&%$#@!;:^~[],.={?}¨";
      
@@ -147,47 +160,44 @@ public class huffmanCoding {
     }
 
     public static void main(String[] args) {
-        for(int i=0; i<10; i++)
-        {
-            String inputText = generateRandomString(10000000);
-            System.out.println("Text length: " + inputText.length());
-            //System.out.println(inputText);
-            
-            // List<String> letters = Arrays.asList(inputText.split(""));
-            // Collections.shuffle(letters);
-            // inputText = "";
-            // for (String letter : letters) {
-            //   inputText += letter;
-            // }
+        String inputText = generateRandomString(10000000);
+        System.out.println("Text length: " + inputText.length());
+        //System.out.println(inputText);
+        
+        // List<String> letters = Arrays.asList(inputText.split(""));
+        // Collections.shuffle(letters);
+        // inputText = "";
+        // for (String letter : letters) {
+        //   inputText += letter;
+        // }
 
-            long start = System.currentTimeMillis();
-            buildHuffmanTree(inputText, 1);
-            long end = System.currentTimeMillis();
-            System.out.println("Single Thread List Merge Sort: " + (end - start));
+        long start = System.currentTimeMillis();
+        buildHuffmanTree(inputText, 1);
+        long end = System.currentTimeMillis();
+        System.out.println("Single Thread List Merge Sort: " + (end - start));
 
-            // letters = Arrays.asList(inputText.split(""));
-            // Collections.shuffle(letters);
-            // inputText = "";
-            // for (String letter : letters) {
-            //   inputText += letter;
-            // }
+        // letters = Arrays.asList(inputText.split(""));
+        // Collections.shuffle(letters);
+        // inputText = "";
+        // for (String letter : letters) {
+        //   inputText += letter;
+        // }
 
-            start = System.currentTimeMillis();
-            buildHuffmanTree(inputText, 8);
-            end = System.currentTimeMillis();
-            System.out.println("Eight Thread List Merge Sort: " + (end - start));
+        start = System.currentTimeMillis();
+        buildHuffmanTree(inputText, 8);
+        end = System.currentTimeMillis();
+        System.out.println("Eight Thread List Merge Sort: " + (end - start));
 
-            // letters = Arrays.asList(inputText.split(""));
-            // Collections.shuffle(letters);
-            // inputText = "";
-            // for (String letter : letters) {
-            //   inputText += letter;
-            // }
+        // letters = Arrays.asList(inputText.split(""));
+        // Collections.shuffle(letters);
+        // inputText = "";
+        // for (String letter : letters) {
+        //   inputText += letter;
+        // }
 
-            start = System.currentTimeMillis();
-            buildHuffmanTree(inputText, 16);
-            end = System.currentTimeMillis();
-            System.out.println("Sixteen Thread List Merge Sort: " + (end - start));
-        }
+        start = System.currentTimeMillis();
+        buildHuffmanTree(inputText, 16);
+        end = System.currentTimeMillis();
+        System.out.println("Sixteen Thread List Merge Sort: " + (end - start));
     }
 }
