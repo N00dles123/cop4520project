@@ -4,7 +4,7 @@ public class huffmanCoding {
 
     static MultiMerge<Node> sorter = new MultiMerge<Node>();
 
-    // implement huffman tree creation
+    // implement ArrayList huffman tree creation
     public static void buildHuffmanTree(String inputText, Integer nThreads) {
         if (inputText == null || inputText.length() == 0) {
             return;
@@ -76,6 +76,109 @@ public class huffmanCoding {
 
     }
 
+    // implement array huffman tree creation
+    public static void buildHuffmanTreeArray(String inputText, Integer nThreads) {
+        if (inputText == null || inputText.length() == 0) {
+            return;
+        }
+
+        // create a map of the chars in the string and its corresponding frequency
+        Map<Character, Integer> freq = new HashMap<>();
+        for (int i = 0; i < inputText.length(); i++) {
+            char c = inputText.charAt(i);
+            if (freq.containsKey(c)) {
+                freq.put(c, freq.get(c) + 1);
+            } 
+            else {
+                freq.put(c, 1);
+            }
+        }
+
+        // create an Array and store the nodes
+        Node [] nodes = new Node[freq.size()];
+        int index=0;
+        Iterator<Map.Entry<Character, Integer>> iterator = freq.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Character, Integer> entry = iterator.next();
+            nodes[index] = new Node(entry.getKey(), entry.getValue());
+            index++;
+
+        }
+
+        // sort the Array
+        if(nThreads == 1)
+        {
+            // regular merge sort
+            huffmanCoding.mergeSortArray(nodes);
+        }
+        
+        else if(nThreads == 8)
+        {
+            // 8 threads
+            sorter.sort(nodes, 8);
+        }
+
+        else if(nThreads == 16)
+        {
+            // 16 threads
+            sorter.sort(nodes, 16);
+        }
+
+        // build huffman tree
+        while(nodes.length > 1) {
+            // create parent node from the two smallest nodes
+            Node left = nodes[0];
+            Node right = nodes[1];
+            int sumOfFrequencies = left.frequency + right.frequency;
+            Node newNode = new Node (null, sumOfFrequencies, left, right);
+
+            // remove 2 smallest nodes and add their parent node
+            Node [] newNodes = new Node[nodes.length-1];
+            newNodes[0] = newNode;
+            for(int i = 2; i<nodes.length; i++)
+            {
+                newNodes[i-1] = nodes[i];
+            }
+            nodes=newNodes;
+
+            // re-sort the Array
+            if(nThreads == 1)
+            {
+                // regular merge sort
+                huffmanCoding.mergeSortArray(nodes);
+            }
+            
+            else if(nThreads == 8)
+            {
+                // 8 threads
+                sorter.sort(nodes, 8);
+            }
+
+            else if(nThreads == 16)
+            {
+                // 16 threads
+                sorter.sort(nodes, 16);
+            }
+
+        }
+
+
+        // build the encoding of the string
+        Node root = nodes[0];
+        Map<Character, String> codes = new HashMap<>();
+        encodeData(root, "", codes);
+        StringBuilder encodedString = new StringBuilder();
+        for (char c: inputText.toCharArray()) {
+            encodedString.append(codes.get(c));
+        }
+
+        // these lines are commented for less visual pollution
+        // System.out.println("Huffman Codes: " + codes);
+        // System.out.println("Input string: " + inputText);
+        // System.out.println("Encoded string: " + encodedString);
+
+    }
+
     // implement encoding of the string
     public static void encodeData(Node root, String str, Map<Character, String> codes) {
         if (root == null) {
@@ -112,6 +215,25 @@ public class huffmanCoding {
         merge(leftArray, rightArray, nodes);
     }
 
+    // implement regular merge sort in Array
+    public static <T extends Comparable<T>> void mergeSortArray(T[] array) 
+    {
+        // Base case, return when the array length is 1
+        if (array == null || array.length < 2) return;
+
+        // Compute the midpoint and split the array into two
+        int mid = array.length / 2;
+        T[] leftArray = Arrays.copyOfRange(array, 0, mid);
+        T[] rightArray = Arrays.copyOfRange(array, mid, array.length);
+
+        // Recursively split the arrays
+        mergeSortArray(leftArray);
+        mergeSortArray(rightArray);
+
+        // Merge algorithm to combine the smaller subarrays into a larger sorted array
+        mergeArray(leftArray, rightArray, array);
+    }
+
     // implement merge function for ArrayList
     public static void merge(ArrayList<Node> leftArray, ArrayList<Node> rightArray, ArrayList<Node> nodes)
     {
@@ -143,6 +265,48 @@ public class huffmanCoding {
         }
     }
 
+    // implement merge function for Array
+    private static <T extends Comparable<T>> void mergeArray(T[] leftArray, T[] rightArray, T[] resultArray) 
+    {
+        // Start by initializing all indices to 0 at first
+        int leftIndex = 0, rightIndex = 0, resultIndex = 0;
+        
+        // Merge the left and right array into the resulting array
+        // keep going until we reach the end of one of the arrays
+        while (leftIndex < leftArray.length && rightIndex < rightArray.length) 
+        {
+            // If the element from the left is smaller, take it and add it to the resulting array
+            if (leftArray[leftIndex].compareTo(rightArray[rightIndex]) <= 0) 
+            {
+                resultArray[resultIndex] = leftArray[leftIndex];
+                leftIndex++;
+            } 
+            // Otherwise, take the element from the right array and add it to the resulting array
+            else 
+            {
+                resultArray[resultIndex] = rightArray[rightIndex];
+                rightIndex++;
+            }
+            resultIndex++; // move to the next spot
+        }
+        // if we still have elements remaining in the left array, add them
+        // if we hit this while loop, it means the right array is fully exhausted
+        while (leftIndex < leftArray.length) 
+        {
+            resultArray[resultIndex] = leftArray[leftIndex];
+            leftIndex++;
+            resultIndex++;
+        }
+        // If we still have elements remaining in the right array, add them
+        // if we hit this while loop, it means the left array is fully exhausted
+        while (rightIndex < rightArray.length) 
+        {
+            resultArray[resultIndex] = rightArray[rightIndex];
+            rightIndex++;
+            resultIndex++;
+        }
+    }
+
     // implement a random string generator
     public static String generateRandomString(int length) {
         String alphanumericCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuv'1234567890/+-_*()&%$#@!;:^~[],.={?}¨";
@@ -162,42 +326,41 @@ public class huffmanCoding {
     public static void main(String[] args) {
         String inputText = generateRandomString(10000000);
         System.out.println("Text length: " + inputText.length());
-        //System.out.println(inputText);
-        
-        // List<String> letters = Arrays.asList(inputText.split(""));
-        // Collections.shuffle(letters);
-        // inputText = "";
-        // for (String letter : letters) {
-        //   inputText += letter;
-        // }
 
+        // ArrayList single thread implementation
         long start = System.currentTimeMillis();
         buildHuffmanTree(inputText, 1);
         long end = System.currentTimeMillis();
-        System.out.println("Single Thread List Merge Sort: " + (end - start));
+        System.out.println("Single Thread ArrayList Merge Sort: " + (end - start));
 
-        // letters = Arrays.asList(inputText.split(""));
-        // Collections.shuffle(letters);
-        // inputText = "";
-        // for (String letter : letters) {
-        //   inputText += letter;
-        // }
-
+        // Array single thread implementation
         start = System.currentTimeMillis();
-        buildHuffmanTree(inputText, 8);
+        buildHuffmanTreeArray(inputText, 1);
         end = System.currentTimeMillis();
-        System.out.println("Eight Thread List Merge Sort: " + (end - start));
+        System.out.println("Single Thread Array Merge Sort: " + (end - start));
 
-        // letters = Arrays.asList(inputText.split(""));
-        // Collections.shuffle(letters);
-        // inputText = "";
-        // for (String letter : letters) {
-        //   inputText += letter;
-        // }
-
+        // ArrayList eight thread implementation
         start = System.currentTimeMillis();
-        buildHuffmanTree(inputText, 16);
+        buildHuffmanTreeArray(inputText, 8);
         end = System.currentTimeMillis();
-        System.out.println("Sixteen Thread List Merge Sort: " + (end - start));
+        System.out.println("Eight Thread ArrayList Merge Sort: " + (end - start));
+
+        // Array eight thread implementation
+        start = System.currentTimeMillis();
+        buildHuffmanTreeArray(inputText, 8);
+        end = System.currentTimeMillis();
+        System.out.println("Eight Thread Array Merge Sort: " + (end - start));
+
+        // ArrayList sixteen thread implementation
+        start = System.currentTimeMillis();
+        buildHuffmanTreeArray(inputText, 16);
+        end = System.currentTimeMillis();
+        System.out.println("Sixteen Thread ArrayList Merge Sort: " + (end - start));
+
+        // Array sixteen thread implementation
+        start = System.currentTimeMillis();
+        buildHuffmanTreeArray(inputText, 16);
+        end = System.currentTimeMillis();
+        System.out.println("Sixteen Thread Array Merge Sort: " + (end - start));
     }
 }
