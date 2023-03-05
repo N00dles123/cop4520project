@@ -52,11 +52,31 @@ public class huffmanCoding {
 
         // build huffman tree
         while (nodes.size() > 1) {
+            // create parent node from the two smallest nodes
             Node left = nodes.remove(0);
             Node right = nodes.remove(0);
             int sumOfFrequencies = left.frequency + right.frequency;
             Node newNode = new Node (null, sumOfFrequencies, left, right);
+
+            // add parent node
             nodes.add(newNode);
+
+            // re-sort the ArrayList
+            if(nThreads == 1)
+            {
+                // regular merge sort
+                huffmanCoding.mergeSort(nodes);
+            }
+            else if(nThreads == 8)
+            {
+                // 8 threads
+                sorter.sort(nodes, 8);
+            }
+            else if(nThreads == 16)
+            {
+                // 16 threads
+                sorter.sort(nodes, 16);
+            }
         }
 
 
