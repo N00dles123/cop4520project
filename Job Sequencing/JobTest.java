@@ -1,5 +1,9 @@
 import java.util.*;
 
+//to run 
+//java JobTest 10000000 50 16 100000 > JobBenchmark/jobSequencing_16threads.txt
+//java JobTest 10000000 50 8 100000 > JobBenchmark/jobSequencing_8threads.txt
+
 public class JobTest {
     private static int ARRAY_SIZE;
     private static int NUM_TESTS;
@@ -10,7 +14,7 @@ public class JobTest {
 
     public static void main(String[] args){
         if(args.length != 4){
-            System.out.println("Usage: java jobTest <array size> <num tests> <num threads> <capacity>");
+            System.out.println("Usage: java jobTest <array size> <num tests> <num threads> <timeslots>");
             return;
         }
 
