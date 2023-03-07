@@ -1,0 +1,30 @@
+ARRAY SIZE: 10000000 | NUMBER OF TESTS: 5
+NUMBER OF THREADS: 8 | NUMBER OF TIME SLOTS: 100000
+Test (Array) 1 (Single Thread)	Time: 6.461s | 6461.0ms
+Test (Array) 1 (Multi Thread)	Time: 6.255s | 6255.0ms
+Test (ArrayList) 1 (Single Thread)	Time: 7.032s | 7032.0ms
+Test (ArrayList) 1 (Multi Thread)	Time: 6.647s | 6647.0ms
+Test (Array) 2 (Single Thread)	Time: 8.316s | 8316.0ms
+Test (Array) 2 (Multi Thread)	Time: 5.776s | 5776.0ms
+Test (ArrayList) 2 (Single Thread)	Time: 11.49s | 11490.0ms
+Test (ArrayList) 2 (Multi Thread)	Time: 6.429s | 6429.0ms
+Test (Array) 3 (Single Thread)	Time: 11.194s | 11194.0ms
+Test (Array) 3 (Multi Thread)	Time: 5.723s | 5723.0ms
+Test (ArrayList) 3 (Single Thread)	Time: 11.947s | 11947.0ms
+Test (ArrayList) 3 (Multi Thread)	Time: 6.518s | 6518.0ms
+Test (Array) 4 (Single Thread)	Time: 8.357s | 8357.0ms
+Test (Array) 4 (Multi Thread)	Time: 5.34s | 5340.0ms
+Test (ArrayList) 4 (Single Thread)	Time: 11.848s | 11848.0ms
+Test (ArrayList) 4 (Multi Thread)	Time: 6.569s | 6569.0ms
+Test (Array) 5 (Single Thread)	Time: 8.339s | 8339.0ms
+Test (Array) 5 (Multi Thread)	Time: 5.812s | 5812.0ms
+Test (ArrayList) 5 (Single Thread)	Time: 13.437s | 13437.0ms
+Test (ArrayList) 5 (Multi Thread)	Time: 5.997s | 5997.0ms
+Average Single Thread Time (Arrays): 8.533s | 8533.0ms
+Average Multi Thread Time (Arrays): 5.781s | 5781.0ms
+Average Single Thread Time (ArrayList): 11.15s | 11150.0ms
+Average Multi Thread Time (ArrayList): 6.432s | 6432.0ms
+Total time to run all tests for single thread (Arrays): 42.667s
+Total time to run all tests for multi thread (Arrays): 28.906s
+Total time to run all tests for single thread (ArrayList): 55.754s
+Total time to run all tests for multi thread (ArrayList): 32.16s
