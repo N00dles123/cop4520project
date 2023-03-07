@@ -5,11 +5,10 @@ public class huffmanCoding {
     static MultiMerge<Node> sorter = new MultiMerge<Node>();
 
     // implement ArrayList huffman tree creation
-    public static void buildHuffmanTree(String inputText, Integer nThreads) {
+    public static Node buildHuffmanTree(String inputText, Integer nThreads) {
         if (inputText == null || inputText.length() == 0) {
-            return;
+            return null;
         }
-
         // create a map of the chars in the string and its corresponding frequency
         Map<Character, Integer> freq = new HashMap<>();
         for (int i = 0; i < inputText.length(); i++) {
@@ -49,57 +48,71 @@ public class huffmanCoding {
             // 16 threads
             sorter.sort(nodes, 16);
         }
+        
+        // now that we have sorted we can build
+        Queue<Node> queue1 = new LinkedList<>();
+        Queue<Node> queue2 = new LinkedList<>();
 
-        // build huffman tree
-        while (nodes.size() > 1) {
-            // create parent node from the two smallest nodes
-            Node left = nodes.remove(0);
-            Node right = nodes.remove(0);
-            int sumOfFrequencies = left.frequency + right.frequency;
-            Node newNode = new Node (null, sumOfFrequencies, left, right);
-
-            // add parent node
-            nodes.add(newNode);
-
-            // re-sort the ArrayList
-            if(nThreads == 1)
-            {
-                // regular merge sort
-                huffmanCoding.mergeSort(nodes);
-            }
-            else if(nThreads == 8)
-            {
-                // 8 threads
-                sorter.sort(nodes, 8);
-            }
-            else if(nThreads == 16)
-            {
-                // 16 threads
-                sorter.sort(nodes, 16);
-            }
+        // add all nodes to queue1
+        for(Node node : nodes)
+        {
+            queue1.add(node);
         }
 
+        while(!(queue1.isEmpty() && queue2.size() == 1)){
+            //get 2 nodes of minimum 
+            Node left = findMin(queue1, queue2);
+            Node right = findMin(queue1, queue2);
 
-        // build the encoding of the string
-        Node root = nodes.get(0);
-        Map<Character, String> codes = new HashMap<>();
-        encodeData(root, "", codes);
-        StringBuilder encodedString = new StringBuilder();
-        for (char c: inputText.toCharArray()) {
-            encodedString.append(codes.get(c));
+            // create new internal node of frequency equal to sum of left and right
+            // add to queue2
+            Node newNode = new Node('$', left.frequency + right.frequency, left, right);
+            
+            queue2.add(newNode);
         }
 
-        // these lines are commented for less visual pollution
-        // System.out.println("Huffman Codes: " + codes);
-        // System.out.println("Input string: " + inputText);
-        // System.out.println("Encoded string: " + encodedString);
-
+        return queue2.poll();
+    }
+    // this will get huffman codes for an ArrayList
+    public static void HuffmanCode(String inputText, Integer nThreads){
+        Node root = buildHuffmanTree(inputText, nThreads);
+        // for storing huffman code
+        int[] array = new int[inputText.length()];
+        int top = 0;
+        // print huffman code this part is commented out for testing purposes
+        // printCode(root, array, top);
     }
 
+
+    public static void printCode(Node root, int[] array, int top){
+        if(root.left != null){
+            array[top] = 0;
+            printCode(root.left, array, top + 1);
+        }
+
+        if(root.right != null){
+            array[top] = 1;
+            printCode(root.right, array, top + 1);
+        }
+
+        if(root.left == null && root.right == null){
+            System.out.print(root.ch + ": ");
+            printArray(array, top);
+        }
+    }
+
+    //
+    public static void printArray(int[] array, int n){
+        for(int i = 0; i < n; i++){
+            System.out.print(array[i]);
+        }
+        System.out.println();
+    }
+    
     // implement array huffman tree creation
-    public static void buildHuffmanTreeArray(String inputText, Integer nThreads) {
+    public static Node buildHuffmanTreeArray(String inputText, Integer nThreads) {
         if (inputText == null || inputText.length() == 0) {
-            return;
+            return null;
         }
 
         // create a map of the chars in the string and its corresponding frequency
@@ -143,62 +156,55 @@ public class huffmanCoding {
             // 16 threads
             sorter.sort(nodes, 16);
         }
+        
+        Queue<Node> queue1 = new LinkedList<>();
+        Queue<Node> queue2 = new LinkedList<>();
+
+        // add all nodes to queue1
+        for(Node node : nodes)
+        {
+            queue1.add(node);
+        }
 
         // build huffman tree
-        while(nodes.length > 1) {
-            // create parent node from the two smallest nodes
-            Node left = nodes[0];
-            Node right = nodes[1];
-            int sumOfFrequencies = left.frequency + right.frequency;
-            Node newNode = new Node (null, sumOfFrequencies, left, right);
+        while(!(queue1.isEmpty() && queue2.size() == 1)){
+            //get 2 nodes of minimum 
+            Node left = findMin(queue1, queue2);
+            Node right = findMin(queue1, queue2);
 
-            // remove 2 smallest nodes and add their parent node
-            Node [] newNodes = new Node[nodes.length-1];
-            newNodes[0] = newNode;
-            for(int i = 2; i<nodes.length; i++)
-            {
-                newNodes[i-1] = nodes[i];
-            }
-            nodes=newNodes;
-
-            // re-sort the Array
-            if(nThreads == 1)
-            {
-                // regular merge sort
-                huffmanCoding.mergeSortArray(nodes);
-            }
+            // create new internal node of frequency equal to sum of left and right
+            // add to queue2
+            Node newNode = new Node('$', left.frequency + right.frequency, left, right);
             
-            else if(nThreads == 8)
-            {
-                // 8 threads
-                sorter.sort(nodes, 8);
-            }
-
-            else if(nThreads == 16)
-            {
-                // 16 threads
-                sorter.sort(nodes, 16);
-            }
-
+            queue2.add(newNode);
         }
 
-
-        // build the encoding of the string
-        Node root = nodes[0];
-        Map<Character, String> codes = new HashMap<>();
-        encodeData(root, "", codes);
-        StringBuilder encodedString = new StringBuilder();
-        for (char c: inputText.toCharArray()) {
-            encodedString.append(codes.get(c));
-        }
-
-        // these lines are commented for less visual pollution
-        // System.out.println("Huffman Codes: " + codes);
-        // System.out.println("Input string: " + inputText);
-        // System.out.println("Encoded string: " + encodedString);
-
+        return queue2.poll();
     }
+    
+    public static void HuffmanCodeArray(String inputText, Integer nThreads){
+        Node root = buildHuffmanTreeArray(inputText, nThreads);
+        // for storing huffman code
+        int[] array = new int[inputText.length()];
+        int top = 0;
+        // print huffman code this part is commented out for testing purposes
+        // printCode(root, array, top);
+    }
+    public static Node findMin(Queue<Node> firstQueue, Queue<Node> secondQueue){
+        if(firstQueue.isEmpty()){
+            return secondQueue.poll();
+        }
+        if(secondQueue.isEmpty()){
+            return firstQueue.poll();
+        }
 
+        if(firstQueue.peek().frequency < secondQueue.peek().frequency){
+            return firstQueue.poll();
+        }
+
+        return secondQueue.poll();
+    }
+    /* 
     // implement encoding of the string
     public static void encodeData(Node root, String str, Map<Character, String> codes) {
         if (root == null) {
@@ -218,7 +224,7 @@ public class huffmanCoding {
         encodeData(root.left, str + '0', codes);
         encodeData(root.right, str + '1', codes);
     }
-
+    */
     // implement regular merge sort in ArrayList
     public static void mergeSort(ArrayList<Node> nodes) {
         if (nodes == null || nodes.size() < 2) {
@@ -349,38 +355,28 @@ public class huffmanCoding {
 
         // ArrayList single thread implementation
         long start = System.currentTimeMillis();
-        buildHuffmanTree(inputText, 1);
+        HuffmanCode(inputText, 1);
         long end = System.currentTimeMillis();
         System.out.println("Single Thread ArrayList Merge Sort: " + (end - start));
 
+        // ArrayList Multi thread implementation
+        start = System.currentTimeMillis();
+        HuffmanCode(inputText, 4);
+        end = System.currentTimeMillis();
+        System.out.println("Multi Thread ArrayList Merge Sort: " + (end - start));
+    
         // Array single thread implementation
         start = System.currentTimeMillis();
-        buildHuffmanTreeArray(inputText, 1);
+        HuffmanCode(inputText, 1);
         end = System.currentTimeMillis();
+
         System.out.println("Single Thread Array Merge Sort: " + (end - start));
 
-        // ArrayList eight thread implementation
+        // Array Multi thread implementation
         start = System.currentTimeMillis();
-        buildHuffmanTreeArray(inputText, 8);
+        HuffmanCode(inputText, 4);
         end = System.currentTimeMillis();
-        System.out.println("Eight Thread ArrayList Merge Sort: " + (end - start));
-
-        // Array eight thread implementation
-        start = System.currentTimeMillis();
-        buildHuffmanTreeArray(inputText, 8);
-        end = System.currentTimeMillis();
-        System.out.println("Eight Thread Array Merge Sort: " + (end - start));
-
-        // ArrayList sixteen thread implementation
-        start = System.currentTimeMillis();
-        buildHuffmanTreeArray(inputText, 16);
-        end = System.currentTimeMillis();
-        System.out.println("Sixteen Thread ArrayList Merge Sort: " + (end - start));
-
-        // Array sixteen thread implementation
-        start = System.currentTimeMillis();
-        buildHuffmanTreeArray(inputText, 16);
-        end = System.currentTimeMillis();
-        System.out.println("Sixteen Thread Array Merge Sort: " + (end - start));
+        System.out.println("Multi Thread Array Merge Sort: " + (end - start));
     }
+
 }

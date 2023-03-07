@@ -1,8 +1,8 @@
 import java.util.*;
 // copy and paste this script for testing purposes
-// java HuffmanTest 10000000 50 8 > HuffmanBenchmark/huffmanCoding_8threads.txt
+// java HuffmanTest 1000000 50 8 > HuffmanBenchmark/huffmanCoding_8threads.txt
 // or
-// java HuffmanTest 10000000 50 16 > HuffmanBenchmark/huffmanCoding_16threads.txt
+// java HuffmanTest 1000000 50 16 > HuffmanBenchmark/huffmanCoding_16threads.txt
 public class HuffmanTest {
     private static int STRING_SIZE;
     private static int NUM_TESTS;
@@ -30,11 +30,9 @@ public class HuffmanTest {
         long multiThreadTotalTime = 0;
         long singleThreadTotalTimeArray = 0;
         long multiThreadTotalTimeArray = 0;
-
+        
+        String inputText = huffmanCoding.generateRandomString(STRING_SIZE);
         for(int i = 0; i < NUM_TESTS; i++){
-            // generate random string of size STRING_SIZE
-            String inputText = huffmanCoding.generateRandomString(STRING_SIZE);
-
             // run single thread
             long singleThreadArray = ht.huffmanTimeArray(inputText, 1);
             singleThreadTotalTimeArray += singleThreadArray;
@@ -82,7 +80,7 @@ public class HuffmanTest {
     // this method will run the huffman coding algorithm and return the time it took to run
     private long huffmanTime(String inputText, Integer nThreads){
         long startTime = System.currentTimeMillis();
-        huffmanCoding.buildHuffmanTree(inputText, nThreads);
+        huffmanCoding.HuffmanCode(inputText, nThreads);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
     }
@@ -90,7 +88,7 @@ public class HuffmanTest {
     // this method will run the huffman coding algorithm and return the time it took to run
     private long huffmanTimeArray(String inputText, Integer nThreads){
         long startTime = System.currentTimeMillis();
-        huffmanCoding.buildHuffmanTreeArray(inputText, nThreads);
+        huffmanCoding.HuffmanCodeArray(inputText, nThreads);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
     }
