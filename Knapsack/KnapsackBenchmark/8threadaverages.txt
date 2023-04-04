@@ -1,0 +1,7 @@
+100 438.0 microseconds
+1000 1177.0 microseconds
+10000 3811.0 microseconds
+100000 11916.0 microseconds
+1000000 91748.0 microseconds
+10000000 1802336.0 microseconds
+100000000 4.4856168E7 microseconds
