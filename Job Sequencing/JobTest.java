@@ -1,8 +1,8 @@
 import java.util.*;
 
 //to run 
-//java JobTest 10000000 50 16 100000 > JobBenchmark/jobSequencing_16threads.txt
-//java JobTest 10000000 50 8 100000 > JobBenchmark/jobSequencing_8threads.txt
+//java JobTest 10000000 50 100000 > JobBenchmark/jobSequencing.txt
+//java JobTest 10000000 50 100000 > JobBenchmark/jobSequencing.txt
 
 public class JobTest {
     private static int ARRAY_SIZE;
@@ -46,84 +46,98 @@ public class JobTest {
     
         }
 
-        // keep running sum of total time taken
-        long singleThreadTotalTime = 0;
-        long multiThreadTotalTime = 0;
-        long singleThreadTotalTimeList = 0;
-        long multiThreadTotalTimeList = 0;
+       // keep running sum of total time taken
+       long singleThreadTotalTimeList = 0;
+       long singleThreadTotalMemoryList = 0;
+       long fourThreadTotalTimeList = 0;
+       long fourThreadTotalMemoryList = 0;
+       long eightThreadTotalMemoryList = 0;
+       long eightThreadTotalTimeList = 0;
+       long sixteenThreadTotalMemoryList = 0;
+       long sixteenThreadTotalTimeList = 0;
 
         for(int i = 0; i < NUM_TESTS; i++){
             
             // run single thread
-            long singleThread = jt.singleJobTime(jobsArr, SLOTS);
-            singleThreadTotalTime += singleThread;
-            System.out.println("Test (Array) " + (i+1) + " (Single Thread)\tTime: " + singleThread / 1000.0 + "s | " + singleThread / 1.0 + "ms");
-            Collections.shuffle(Arrays.asList(jobsArr)); // shuffle array
-           
-            // run multi thread
-            long multiThread = jt.threadedJobTime(NUM_THREADS, jobsArr, SLOTS);
-            multiThreadTotalTime += multiThread;
-            System.out.println("Test (Array) " + (i+1) + " (Multi Thread)\tTime: " + multiThread / 1000.0 + "s | " + multiThread / 1.0 + "ms");
-            Collections.shuffle(Arrays.asList(jobsArr));
-
-            // run single thread list
-            long singleThreadList = jt.singleJobTime(jobs, SLOTS);
-            singleThreadTotalTimeList += singleThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: " + singleThreadList / 1000.0 + "s | " + singleThreadList / 1.0 + "ms");
+            long[] singleThreadList = jt.singleJobMetric(jobs, SLOTS);
+            singleThreadTotalTimeList += singleThreadList[0];
+            singleThreadTotalMemoryList += singleThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: "  + singleThreadList[0] / 1.0 + "microsec" + " | Memory: " + singleThreadList[1] + "KB");
             Collections.shuffle(jobs); // shuffle array
+            // clear memory 
+            System.gc();
 
-            // run multi thread list
-            long multiThreadList = jt.threadedJobTime(NUM_THREADS, jobs, SLOTS);
-            multiThreadTotalTimeList += multiThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (Multi Thread)\tTime: " + multiThreadList / 1000.0 + "s | " + multiThreadList / 1.0 + "ms");
+            // run four thread
+            long[] multiThreadList = jt.threadedJobMetric(4, jobs, SLOTS);
+            fourThreadTotalTimeList += multiThreadList[0];
+            fourThreadTotalMemoryList += multiThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (4 Thread)\tTime: " + multiThreadList[0] / 1.0 + "microsec" + " | Memory: " + multiThreadList[1]+ "KB");
             Collections.shuffle(jobs);
+            System.gc();
+
+            // run 8 thread
+            long[] eightThreadList = jt.threadedJobMetric(8, jobs, SLOTS);
+            eightThreadTotalTimeList += eightThreadList[0];
+            eightThreadTotalMemoryList += eightThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (8 Thread)\tTime: " + eightThreadList[0] / 1.0 + "microsec" + " | Memory: " + eightThreadList[1] + "KB");
+            Collections.shuffle(jobs);
+            System.gc();
+
+            // run 16 thread
+            long[] sixteenThreadList = jt.threadedJobMetric(16, jobs, SLOTS);
+            sixteenThreadTotalTimeList += sixteenThreadList[0];
+            sixteenThreadTotalMemoryList += sixteenThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (16 Thread)\tTime: " + sixteenThreadList[0] / 1.0 + "microsec" + " | Memory: " + sixteenThreadList[1] + "KB");
+            Collections.shuffle(jobs);
+            System.gc();
 
         }
 
-        double singleThreadAverage = singleThreadTotalTime / NUM_TESTS / 1.0;
-        double multiThreadAverage = multiThreadTotalTime / NUM_TESTS / 1.0;
         double singleThreadListAverage = singleThreadTotalTimeList / NUM_TESTS / 1.0;
-        double multiThreadListAverage = multiThreadTotalTimeList / NUM_TESTS / 1.0;
-        double singleThreadAverageSeconds = singleThreadAverage / 1000.0;
-        double multiThreadAverageSeconds = multiThreadAverage / 1000.0;
-        double singleThreadListAverageSeconds = singleThreadListAverage / 1000.0;
-        double multiThreadListAverageSeconds = multiThreadListAverage / 1000.0;
-        System.out.println("Average Single Thread Time (Arrays): " + singleThreadAverageSeconds + "s | " + singleThreadAverage + "ms");
-        System.out.println("Average Multi Thread Time (Arrays): " + multiThreadAverageSeconds + "s | " + multiThreadAverage + "ms");
-        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverageSeconds + "s | " + singleThreadListAverage + "ms");
-        System.out.println("Average Multi Thread Time (ArrayList): " + multiThreadListAverageSeconds + "s | " + multiThreadListAverage + "ms");
-        System.out.println("Total time to run all tests for single thread (Arrays): " + singleThreadTotalTime / 1000.0 + "s");
-        System.out.println("Total time to run all tests for multi thread (Arrays): " + multiThreadTotalTime / 1000.0 + "s");
-        System.out.println("Total time to run all tests for single thread (ArrayList): " + singleThreadTotalTimeList / 1000.0 + "s");
-        System.out.println("Total time to run all tests for multi thread (ArrayList): " + multiThreadTotalTimeList / 1000.0 + "s");
-    
+        double singleThreadListAverageMem = singleThreadTotalMemoryList / NUM_TESTS / 1.0;
+        double fourThreadListAverage = fourThreadTotalTimeList / NUM_TESTS / 1.0;
+        double fourThreadListAverageMem = fourThreadTotalMemoryList / NUM_TESTS / 1.0;
+        double eightThreadListAverage = eightThreadTotalTimeList / NUM_TESTS / 1.0;
+        double eightThreadListAverageMem = eightThreadTotalMemoryList / NUM_TESTS / 1.0;
+        double sixteenThreadListAverage = sixteenThreadTotalTimeList / NUM_TESTS / 1.0;
+        double sixteenThreadListAverageMem = sixteenThreadTotalMemoryList / NUM_TESTS / 1.0;
+       
+        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverage + "microsec" + " | Average Memory: " + singleThreadListAverageMem + "KB");
+        System.out.println("Average Four Thread Time (ArrayList): " + fourThreadListAverage + "microsec" + " | Average Memory: " + fourThreadListAverageMem + "KB");
+        System.out.println("Average Eight Thread Time (ArrayList): " + eightThreadListAverage + "microsec" + " | Average Memory: " + eightThreadListAverageMem + "KB");
+        System.out.println("Average Sixteen Thread Time (ArrayList): " +sixteenThreadListAverage + "microsec" + " | Average Memory: " + sixteenThreadListAverageMem + "KB");
+
     }
 
-    private long singleJobTime(Job[] jobsArr, int slots){
-        long startTime = System.currentTimeMillis();
-        js.singleThreadSequenceJobs(jobsArr, slots);
-        long endTime = System.currentTimeMillis();
-        return (endTime - startTime);
-    }
+    // private long singleJobMetric(Job[] jobsArr, int slots){
+    //     long startTime = System.currentTimeMillis();
+    //     js.singleThreadSequenceJobs(jobsArr, slots);
+    //     long endTime = System.currentTimeMillis();
+    //     return (endTime - startTime);
+    // }
 
-    private long threadedJobTime(int numThreads, Job[] jobsArr, int slots){
-        long startTime = System.currentTimeMillis();
-        js.nThreadSequenceJobs(jobsArr, slots, numThreads);
-        long endTime = System.currentTimeMillis();
-        return (endTime - startTime);
-    }
+    // private long threadedJobTime(int numThreads, Job[] jobsArr, int slots){
+    //     long startTime = System.currentTimeMillis();
+    //     js.nThreadSequenceJobs(jobsArr, slots, numThreads);
+    //     long endTime = System.currentTimeMillis();
+    //     return (endTime - startTime);
+    // }
 
-    private long singleJobTime(ArrayList<Job> jobs, int slots){
-        long startTime = System.currentTimeMillis();
+    private long[] singleJobMetric(ArrayList<Job> jobs, int slots){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         js.singleThreadSequenceJobs(jobs, slots);
-        long endTime = System.currentTimeMillis();
-        return (endTime - startTime);
+        long endTime = System.nanoTime();
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000 , (afterUsedMem - beforeUsedMem) / 1000};
     }
 
-    private long threadedJobTime(int numThreads, ArrayList<Job> jobs, int slots){
-        long startTime = System.currentTimeMillis();
+    private long[] threadedJobMetric(int numThreads, ArrayList<Job> jobs, int slots){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         js.nThreadSequenceJobs(jobs, slots, numThreads);
-        long endTime = System.currentTimeMillis();
-        return (endTime - startTime);
+        long endTime = System.nanoTime();
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000, (afterUsedMem - beforeUsedMem) / 1000};
     }
 }
