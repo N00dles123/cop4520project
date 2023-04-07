@@ -34,87 +34,100 @@ public class KnapsackTest {
 
         // keep running sum of total time taken
         long singleThreadTotalTimeList = 0;
+        long singleThreadTotalMemoryList = 0;
         long fourThreadTotalTimeList = 0;
+        long fourThreadTotalMemoryList = 0;
+        long eightThreadTotalMemoryList = 0;
         long eightThreadTotalTimeList = 0;
+        long sixteenThreadTotalMemoryList = 0;
         long sixteenThreadTotalTimeList = 0;
         for(int i = 0; i < NUM_TESTS; i++){
             
 
             // run single thread
-            long singleThreadList = kt.singleKnapsackTime(itemsList, CAPACITY);
-            singleThreadTotalTimeList += singleThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: " + singleThreadList / 1000000000.0 + "s | " + singleThreadList / 1.0 + "microsec");
+            long[] singleThreadList = kt.singleKnapsackMetric(itemsList, CAPACITY);
+            singleThreadTotalTimeList += singleThreadList[0];
+            singleThreadTotalMemoryList += singleThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: "  + singleThreadList[0] / 1.0 + "microsec" + " | Memory: " + singleThreadList[1] + "KB");
             Collections.shuffle(itemsList); // shuffle array
-
-            // run multi thread
-            long multiThreadList = kt.threadedKnapsackTime(4, itemsList, CAPACITY);
-            fourThreadTotalTimeList += multiThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (4 Thread)\tTime: " + multiThreadList / 1000000000.0 + "s | " + multiThreadList / 1.0 + "microsec");
+            // clear memory 
+            System.gc();
+            
+            // run four thread
+            long[] multiThreadList = kt.threadedKnapsackMetric(4, itemsList, CAPACITY);
+            fourThreadTotalTimeList += multiThreadList[0];
+            fourThreadTotalMemoryList += multiThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (4 Thread)\tTime: " + multiThreadList[0] / 1.0 + "microsec" + " | Memory: " + multiThreadList[1]+ "KB");
             Collections.shuffle(itemsList);
-
+            System.gc();
             // run 8 thread
-            long eightThreadList = kt.threadedKnapsackTime(8, itemsList, CAPACITY);
-            eightThreadTotalTimeList += eightThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (8 Thread)\tTime: " + eightThreadList / 1000000000.0 + "s | " + eightThreadList / 1.0 + "microsec");
+            long[] eightThreadList = kt.threadedKnapsackMetric(8, itemsList, CAPACITY);
+            eightThreadTotalTimeList += eightThreadList[0];
+            eightThreadTotalMemoryList += eightThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (8 Thread)\tTime: " + eightThreadList[0] / 1.0 + "microsec" + " | Memory: " + eightThreadList[1] + "KB");
             Collections.shuffle(itemsList);
+            System.gc();
 
             // run 16 thread
-            long sixteenThreadList = kt.threadedKnapsackTime(16, itemsList, CAPACITY);
-            sixteenThreadTotalTimeList += sixteenThreadList;
-            System.out.println("Test (ArrayList) " + (i+1) + " (16 Thread)\tTime: " + sixteenThreadList / 1000000000.0 + "s | " + sixteenThreadList / 1.0 + "microsec");
+            long[] sixteenThreadList = kt.threadedKnapsackMetric(16, itemsList, CAPACITY);
+            sixteenThreadTotalTimeList += sixteenThreadList[0];
+            sixteenThreadTotalMemoryList += sixteenThreadList[1];
+            System.out.println("Test (ArrayList) " + (i+1) + " (16 Thread)\tTime: " + sixteenThreadList[0] / 1.0 + "microsec" + " | Memory: " + sixteenThreadList[1] + "KB");
             Collections.shuffle(itemsList);
+            System.gc();
         }
 
         //double singleThreadAverage = singleThreadTotalTime / NUM_TESTS / 1.0;
         //double multiThreadAverage = fourThreadTotalTime / NUM_TESTS / 1.0;
         double singleThreadListAverage = singleThreadTotalTimeList / NUM_TESTS / 1.0;
+        double singleThreadListAverageMem = singleThreadTotalMemoryList / NUM_TESTS / 1.0;
         double fourThreadListAverage = fourThreadTotalTimeList / NUM_TESTS / 1.0;
+        double fourThreadListAverageMem = fourThreadTotalMemoryList / NUM_TESTS / 1.0;
         double eightThreadListAverage = eightThreadTotalTimeList / NUM_TESTS / 1.0;
+        double eightThreadListAverageMem = eightThreadTotalMemoryList / NUM_TESTS / 1.0;
         double sixteenThreadListAverage = sixteenThreadTotalTimeList / NUM_TESTS / 1.0;
-       // double singleThreadAverageSeconds = singleThreadAverage / 1000000000.0;
-        //double multiThreadAverageSeconds = multiThreadAverage / 1000000000.0;
-        double singleThreadListAverageSeconds = singleThreadListAverage / 1000000000.0;
-        double fourThreadListAverageSeconds = fourThreadListAverage / 10000000000.0;
-        double eightThreadListAverageSeconds = eightThreadListAverage / 10000000000.0;
-        double sixteenThreadListAverageSeconds = sixteenThreadListAverage / 10000000000.0;
-        //System.out.println("Average Single Thread Time (Arrays): " + singleThreadAverageSeconds + "s | " + singleThreadAverage + "microsec");
-        //System.out.println("Average Multi Thread Time (Arrays): " + multiThreadAverageSeconds + "s | " + multiThreadAverage + "microsec");
-        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverageSeconds + "s | " + singleThreadListAverage + "microsec");
-        System.out.println("Average Four Thread Time (ArrayList): " + fourThreadListAverageSeconds + "s | " + fourThreadListAverage + "microsec");
-        System.out.println("Average Eight Thread Time (ArrayList): " + eightThreadListAverageSeconds + "s | " + eightThreadListAverage + "microsec");
-        System.out.println("Average Sixteen Thread Time (ArrayList): " + sixteenThreadListAverageSeconds + "s | " + sixteenThreadListAverage + "microsec");
-        //System.out.println("Total time to run all tests for single thread (Arrays): " + singleThreadTotalTime / 1000.0 + "s");
-        //System.out.println("Total time to run all tests for multi thread (Arrays): " + multiThreadTotalTime / 1000.0 + "s");
-        //System.out.println("Total time to run all tests for single thread (ArrayList): " + singleThreadTotalTimeList / 1000.0 + "s");
-        //System.out.println("Total time to run all tests for multi thread (ArrayList): " + multiThreadTotalTimeList / 1000.0 + "s");
+        double sixteenThreadListAverageMem = sixteenThreadTotalMemoryList / NUM_TESTS / 1.0;
+       
 
+        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverage + "microsec" + " | Average Memory: " + singleThreadListAverageMem + "KB");
+        System.out.println("Average Four Thread Time (ArrayList): " + fourThreadListAverage + "microsec" + " | Average Memory: " + fourThreadListAverageMem + "KB");
+        System.out.println("Average Eight Thread Time (ArrayList): " + eightThreadListAverage + "microsec" + " | Average Memory: " + eightThreadListAverageMem + "KB");
+        System.out.println("Average Sixteen Thread Time (ArrayList): " +sixteenThreadListAverage + "microsec" + " | Average Memory: " + sixteenThreadListAverageMem + "KB");
     }
     // this method will run the knapsack algorithm and return the time it took to run needs some fixing
-    private long threadedKnapsackTime(int numThreads, Obj[] items, int capacity){
+    private long[] threadedKnapsackMetric(int numThreads, Obj[] items, int capacity){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long startTime = System.nanoTime();
         kp.nThreadKnapsack(items, capacity, numThreads);
         long endTime = System.nanoTime();
-        return (endTime - startTime) / 1000;
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000, (afterUsedMem - beforeUsedMem) / 1000};
     }
 
-    private long singleKnapsackTime(Obj[] items, int capacity){
+    private long[] singleKnapsackMetric(Obj[] items, int capacity){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long startTime = System.nanoTime();
         fractionalKnapsack.singleThreadFractionalKnapsack(items, capacity);
         long endTime = System.nanoTime();
-        return (endTime - startTime) / 1000;
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000, (afterUsedMem - beforeUsedMem) / 1000};
     }
 
-    private long singleKnapsackTime(ArrayList<Obj> items, int capacity){
+    private long[] singleKnapsackMetric(ArrayList<Obj> items, int capacity){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long startTime = System.nanoTime();
         kp.singleThreadFractionalKnapsack(items, capacity);
         long endTime = System.nanoTime();
-        return (endTime - startTime) / 1000;
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000 , (afterUsedMem - beforeUsedMem) / 1000};
     }
 
-    private long threadedKnapsackTime(int numThreads, ArrayList<Obj> items, int capacity){
+    private long[] threadedKnapsackMetric(int numThreads, ArrayList<Obj> items, int capacity){
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long startTime = System.nanoTime();
         kp.nThreadKnapsack(items, capacity, numThreads);
         long endTime = System.nanoTime();
-        return (endTime - startTime) / 1000;
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return new long[] {(endTime - startTime) / 1000, (afterUsedMem - beforeUsedMem) / 1000};
     }
 }

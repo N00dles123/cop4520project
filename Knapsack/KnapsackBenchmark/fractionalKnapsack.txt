@@ -1,86 +1,86 @@
-ARRAY SIZE: 1000000 | NUMBER OF TESTS: 20
-| KNAPSACK CAPACITY: 1000000
-Test (ArrayList) 1 (Single Thread)	Time: 3.78738E-4s | 378738.0microsec
-Test (ArrayList) 1 (4 Thread)	Time: 2.35943E-4s | 235943.0microsec
-Test (ArrayList) 1 (8 Thread)	Time: 1.41203E-4s | 141203.0microsec
-Test (ArrayList) 1 (16 Thread)	Time: 1.53491E-4s | 153491.0microsec
-Test (ArrayList) 2 (Single Thread)	Time: 4.31513E-4s | 431513.0microsec
-Test (ArrayList) 2 (4 Thread)	Time: 1.38333E-4s | 138333.0microsec
-Test (ArrayList) 2 (8 Thread)	Time: 1.15416E-4s | 115416.0microsec
-Test (ArrayList) 2 (16 Thread)	Time: 1.01249E-4s | 101249.0microsec
-Test (ArrayList) 3 (Single Thread)	Time: 3.96763E-4s | 396763.0microsec
-Test (ArrayList) 3 (4 Thread)	Time: 1.33738E-4s | 133738.0microsec
-Test (ArrayList) 3 (8 Thread)	Time: 1.12297E-4s | 112297.0microsec
-Test (ArrayList) 3 (16 Thread)	Time: 1.31303E-4s | 131303.0microsec
-Test (ArrayList) 4 (Single Thread)	Time: 5.02588E-4s | 502588.0microsec
-Test (ArrayList) 4 (4 Thread)	Time: 1.35874E-4s | 135874.0microsec
-Test (ArrayList) 4 (8 Thread)	Time: 1.68619E-4s | 168619.0microsec
-Test (ArrayList) 4 (16 Thread)	Time: 2.98196E-4s | 298196.0microsec
-Test (ArrayList) 5 (Single Thread)	Time: 3.83737E-4s | 383737.0microsec
-Test (ArrayList) 5 (4 Thread)	Time: 1.29429E-4s | 129429.0microsec
-Test (ArrayList) 5 (8 Thread)	Time: 1.02657E-4s | 102657.0microsec
-Test (ArrayList) 5 (16 Thread)	Time: 9.9515E-5s | 99515.0microsec
-Test (ArrayList) 6 (Single Thread)	Time: 3.68052E-4s | 368052.0microsec
-Test (ArrayList) 6 (4 Thread)	Time: 1.25376E-4s | 125376.0microsec
-Test (ArrayList) 6 (8 Thread)	Time: 9.5589E-5s | 95589.0microsec
-Test (ArrayList) 6 (16 Thread)	Time: 9.4567E-5s | 94567.0microsec
-Test (ArrayList) 7 (Single Thread)	Time: 3.72707E-4s | 372707.0microsec
-Test (ArrayList) 7 (4 Thread)	Time: 1.43556E-4s | 143556.0microsec
-Test (ArrayList) 7 (8 Thread)	Time: 1.12027E-4s | 112027.0microsec
-Test (ArrayList) 7 (16 Thread)	Time: 1.00526E-4s | 100526.0microsec
-Test (ArrayList) 8 (Single Thread)	Time: 3.74255E-4s | 374255.0microsec
-Test (ArrayList) 8 (4 Thread)	Time: 1.28258E-4s | 128258.0microsec
-Test (ArrayList) 8 (8 Thread)	Time: 1.13948E-4s | 113948.0microsec
-Test (ArrayList) 8 (16 Thread)	Time: 1.24467E-4s | 124467.0microsec
-Test (ArrayList) 9 (Single Thread)	Time: 4.47389E-4s | 447389.0microsec
-Test (ArrayList) 9 (4 Thread)	Time: 1.52425E-4s | 152425.0microsec
-Test (ArrayList) 9 (8 Thread)	Time: 1.0816E-4s | 108160.0microsec
-Test (ArrayList) 9 (16 Thread)	Time: 2.20613E-4s | 220613.0microsec
-Test (ArrayList) 10 (Single Thread)	Time: 4.21799E-4s | 421799.0microsec
-Test (ArrayList) 10 (4 Thread)	Time: 1.40686E-4s | 140686.0microsec
-Test (ArrayList) 10 (8 Thread)	Time: 1.12096E-4s | 112096.0microsec
-Test (ArrayList) 10 (16 Thread)	Time: 1.09054E-4s | 109054.0microsec
-Test (ArrayList) 11 (Single Thread)	Time: 3.84408E-4s | 384408.0microsec
-Test (ArrayList) 11 (4 Thread)	Time: 1.34285E-4s | 134285.0microsec
-Test (ArrayList) 11 (8 Thread)	Time: 1.01681E-4s | 101681.0microsec
-Test (ArrayList) 11 (16 Thread)	Time: 1.04725E-4s | 104725.0microsec
-Test (ArrayList) 12 (Single Thread)	Time: 4.04608E-4s | 404608.0microsec
-Test (ArrayList) 12 (4 Thread)	Time: 1.37082E-4s | 137082.0microsec
-Test (ArrayList) 12 (8 Thread)	Time: 1.04582E-4s | 104582.0microsec
-Test (ArrayList) 12 (16 Thread)	Time: 9.7351E-5s | 97351.0microsec
-Test (ArrayList) 13 (Single Thread)	Time: 3.8823E-4s | 388230.0microsec
-Test (ArrayList) 13 (4 Thread)	Time: 1.43884E-4s | 143884.0microsec
-Test (ArrayList) 13 (8 Thread)	Time: 1.06035E-4s | 106035.0microsec
-Test (ArrayList) 13 (16 Thread)	Time: 1.0947E-4s | 109470.0microsec
-Test (ArrayList) 14 (Single Thread)	Time: 4.05412E-4s | 405412.0microsec
-Test (ArrayList) 14 (4 Thread)	Time: 1.36921E-4s | 136921.0microsec
-Test (ArrayList) 14 (8 Thread)	Time: 1.11626E-4s | 111626.0microsec
-Test (ArrayList) 14 (16 Thread)	Time: 3.44013E-4s | 344013.0microsec
-Test (ArrayList) 15 (Single Thread)	Time: 4.79011E-4s | 479011.0microsec
-Test (ArrayList) 15 (4 Thread)	Time: 1.34714E-4s | 134714.0microsec
-Test (ArrayList) 15 (8 Thread)	Time: 1.2048E-4s | 120480.0microsec
-Test (ArrayList) 15 (16 Thread)	Time: 1.33772E-4s | 133772.0microsec
-Test (ArrayList) 16 (Single Thread)	Time: 4.51746E-4s | 451746.0microsec
-Test (ArrayList) 16 (4 Thread)	Time: 1.43957E-4s | 143957.0microsec
-Test (ArrayList) 16 (8 Thread)	Time: 9.3746E-5s | 93746.0microsec
-Test (ArrayList) 16 (16 Thread)	Time: 9.8346E-5s | 98346.0microsec
-Test (ArrayList) 17 (Single Thread)	Time: 4.09236E-4s | 409236.0microsec
-Test (ArrayList) 17 (4 Thread)	Time: 1.41551E-4s | 141551.0microsec
-Test (ArrayList) 17 (8 Thread)	Time: 1.11778E-4s | 111778.0microsec
-Test (ArrayList) 17 (16 Thread)	Time: 1.8981E-4s | 189810.0microsec
-Test (ArrayList) 18 (Single Thread)	Time: 4.7124E-4s | 471240.0microsec
-Test (ArrayList) 18 (4 Thread)	Time: 1.56297E-4s | 156297.0microsec
-Test (ArrayList) 18 (8 Thread)	Time: 2.81074E-4s | 281074.0microsec
-Test (ArrayList) 18 (16 Thread)	Time: 1.62509E-4s | 162509.0microsec
-Test (ArrayList) 19 (Single Thread)	Time: 4.44023E-4s | 444023.0microsec
-Test (ArrayList) 19 (4 Thread)	Time: 1.22245E-4s | 122245.0microsec
-Test (ArrayList) 19 (8 Thread)	Time: 1.04564E-4s | 104564.0microsec
-Test (ArrayList) 19 (16 Thread)	Time: 1.18435E-4s | 118435.0microsec
-Test (ArrayList) 20 (Single Thread)	Time: 4.00387E-4s | 400387.0microsec
-Test (ArrayList) 20 (4 Thread)	Time: 1.39381E-4s | 139381.0microsec
-Test (ArrayList) 20 (8 Thread)	Time: 1.01932E-4s | 101932.0microsec
-Test (ArrayList) 20 (16 Thread)	Time: 1.17905E-4s | 117905.0microsec
-Average Single Thread Time (ArrayList): 4.15792E-4s | 415792.0microsec
-Average Four Thread Time (ArrayList): 1.42696E-5s | 142696.0microsec
-Average Eight Thread Time (ArrayList): 1.20975E-5s | 120975.0microsec
-Average Sixteen Thread Time (ArrayList): 1.45465E-5s | 145465.0microsec
+ARRAY SIZE: 10000000 | NUMBER OF TESTS: 20
+| KNAPSACK CAPACITY: 100000
+Test (ArrayList) 1 (Single Thread)	Time: 2916163.0microsec | Memory: 290313KB
+Test (ArrayList) 1 (4 Thread)	Time: 1763479.0microsec | Memory: 379622KB
+Test (ArrayList) 1 (8 Thread)	Time: 1613691.0microsec | Memory: 86006KB
+Test (ArrayList) 1 (16 Thread)	Time: 1308083.0microsec | Memory: 264278KB
+Test (ArrayList) 2 (Single Thread)	Time: 4160989.0microsec | Memory: 317607KB
+Test (ArrayList) 2 (4 Thread)	Time: 1604351.0microsec | Memory: 393231KB
+Test (ArrayList) 2 (8 Thread)	Time: 1380236.0microsec | Memory: 745626KB
+Test (ArrayList) 2 (16 Thread)	Time: 1383316.0microsec | Memory: 256047KB
+Test (ArrayList) 3 (Single Thread)	Time: 4195633.0microsec | Memory: 146691KB
+Test (ArrayList) 3 (4 Thread)	Time: 1745721.0microsec | Memory: 379596KB
+Test (ArrayList) 3 (8 Thread)	Time: 1312147.0microsec | Memory: 670951KB
+Test (ArrayList) 3 (16 Thread)	Time: 1339211.0microsec | Memory: 408048KB
+Test (ArrayList) 4 (Single Thread)	Time: 4031454.0microsec | Memory: 965627KB
+Test (ArrayList) 4 (4 Thread)	Time: 1710192.0microsec | Memory: 139473KB
+Test (ArrayList) 4 (8 Thread)	Time: 1370261.0microsec | Memory: 537936KB
+Test (ArrayList) 4 (16 Thread)	Time: 1303575.0microsec | Memory: 415508KB
+Test (ArrayList) 5 (Single Thread)	Time: 3967030.0microsec | Memory: 1848528KB
+Test (ArrayList) 5 (4 Thread)	Time: 1920424.0microsec | Memory: 127943KB
+Test (ArrayList) 5 (8 Thread)	Time: 1338008.0microsec | Memory: 1721896KB
+Test (ArrayList) 5 (16 Thread)	Time: 1451709.0microsec | Memory: 420183KB
+Test (ArrayList) 6 (Single Thread)	Time: 4275287.0microsec | Memory: 325214KB
+Test (ArrayList) 6 (4 Thread)	Time: 1811122.0microsec | Memory: 165691KB
+Test (ArrayList) 6 (8 Thread)	Time: 1359422.0microsec | Memory: 87049KB
+Test (ArrayList) 6 (16 Thread)	Time: 1270717.0microsec | Memory: 541105KB
+Test (ArrayList) 7 (Single Thread)	Time: 4365869.0microsec | Memory: 330190KB
+Test (ArrayList) 7 (4 Thread)	Time: 1794094.0microsec | Memory: 201340KB
+Test (ArrayList) 7 (8 Thread)	Time: 1383120.0microsec | Memory: 83904KB
+Test (ArrayList) 7 (16 Thread)	Time: 1412997.0microsec | Memory: 441849KB
+Test (ArrayList) 8 (Single Thread)	Time: 4269622.0microsec | Memory: 206458KB
+Test (ArrayList) 8 (4 Thread)	Time: 1823230.0microsec | Memory: 234366KB
+Test (ArrayList) 8 (8 Thread)	Time: 1363441.0microsec | Memory: 1720017KB
+Test (ArrayList) 8 (16 Thread)	Time: 1366776.0microsec | Memory: 501825KB
+Test (ArrayList) 9 (Single Thread)	Time: 4117783.0microsec | Memory: 832571KB
+Test (ArrayList) 9 (4 Thread)	Time: 1475525.0microsec | Memory: 1336396KB
+Test (ArrayList) 9 (8 Thread)	Time: 1542608.0microsec | Memory: 83910KB
+Test (ArrayList) 9 (16 Thread)	Time: 1292371.0microsec | Memory: 536904KB
+Test (ArrayList) 10 (Single Thread)	Time: 4319558.0microsec | Memory: 146691KB
+Test (ArrayList) 10 (4 Thread)	Time: 1630112.0microsec | Memory: 737772KB
+Test (ArrayList) 10 (8 Thread)	Time: 1610290.0microsec | Memory: 677194KB
+Test (ArrayList) 10 (16 Thread)	Time: 1443460.0microsec | Memory: 418225KB
+Test (ArrayList) 11 (Single Thread)	Time: 4149551.0microsec | Memory: 223975KB
+Test (ArrayList) 11 (4 Thread)	Time: 1574263.0microsec | Memory: 736851KB
+Test (ArrayList) 11 (8 Thread)	Time: 1386919.0microsec | Memory: 783028KB
+Test (ArrayList) 11 (16 Thread)	Time: 1326538.0microsec | Memory: 285252KB
+Test (ArrayList) 12 (Single Thread)	Time: 4247769.0microsec | Memory: 144594KB
+Test (ArrayList) 12 (4 Thread)	Time: 1682408.0microsec | Memory: 630664KB
+Test (ArrayList) 12 (8 Thread)	Time: 1467768.0microsec | Memory: 84954KB
+Test (ArrayList) 12 (16 Thread)	Time: 1281395.0microsec | Memory: 840755KB
+Test (ArrayList) 13 (Single Thread)	Time: 4227874.0microsec | Memory: 438306KB
+Test (ArrayList) 13 (4 Thread)	Time: 1590489.0microsec | Memory: 739716KB
+Test (ArrayList) 13 (8 Thread)	Time: 1395638.0microsec | Memory: 431063KB
+Test (ArrayList) 13 (16 Thread)	Time: 1434501.0microsec | Memory: 446799KB
+Test (ArrayList) 14 (Single Thread)	Time: 3982219.0microsec | Memory: 826279KB
+Test (ArrayList) 14 (4 Thread)	Time: 1755102.0microsec | Memory: 377501KB
+Test (ArrayList) 14 (8 Thread)	Time: 1240232.0microsec | Memory: 1404444KB
+Test (ArrayList) 14 (16 Thread)	Time: 1343896.0microsec | Memory: 688938KB
+Test (ArrayList) 15 (Single Thread)	Time: 4139837.0microsec | Memory: 231624KB
+Test (ArrayList) 15 (4 Thread)	Time: 1592991.0microsec | Memory: 742053KB
+Test (ArrayList) 15 (8 Thread)	Time: 1303796.0microsec | Memory: 446182KB
+Test (ArrayList) 15 (16 Thread)	Time: 1326790.0microsec | Memory: 536904KB
+Test (ArrayList) 16 (Single Thread)	Time: 4463316.0microsec | Memory: 342460KB
+Test (ArrayList) 16 (4 Thread)	Time: 1716426.0microsec | Memory: 770738KB
+Test (ArrayList) 16 (8 Thread)	Time: 1326543.0microsec | Memory: 1374362KB
+Test (ArrayList) 16 (16 Thread)	Time: 1477694.0microsec | Memory: 593275KB
+Test (ArrayList) 17 (Single Thread)	Time: 4345472.0microsec | Memory: 148007KB
+Test (ArrayList) 17 (4 Thread)	Time: 1845688.0microsec | Memory: 151008KB
+Test (ArrayList) 17 (8 Thread)	Time: 1430491.0microsec | Memory: 83908KB
+Test (ArrayList) 17 (16 Thread)	Time: 1371019.0microsec | Memory: 540053KB
+Test (ArrayList) 18 (Single Thread)	Time: 4541195.0microsec | Memory: 448792KB
+Test (ArrayList) 18 (4 Thread)	Time: 1705709.0microsec | Memory: 736314KB
+Test (ArrayList) 18 (8 Thread)	Time: 1413963.0microsec | Memory: 630553KB
+Test (ArrayList) 18 (16 Thread)	Time: 1551123.0microsec | Memory: 83920KB
+Test (ArrayList) 19 (Single Thread)	Time: 4371894.0microsec | Memory: 148007KB
+Test (ArrayList) 19 (4 Thread)	Time: 1633494.0microsec | Memory: 738343KB
+Test (ArrayList) 19 (8 Thread)	Time: 1517406.0microsec | Memory: 137385KB
+Test (ArrayList) 19 (16 Thread)	Time: 1545870.0microsec | Memory: 435582KB
+Test (ArrayList) 20 (Single Thread)	Time: 4001602.0microsec | Memory: 812222KB
+Test (ArrayList) 20 (4 Thread)	Time: 1777922.0microsec | Memory: 377501KB
+Test (ArrayList) 20 (8 Thread)	Time: 1352745.0microsec | Memory: 408123KB
+Test (ArrayList) 20 (16 Thread)	Time: 1309899.0microsec | Memory: 1737267KB
+Average Single Thread Time (ArrayList): 4154505.0microsec | Average Memory: 458707.0KB
+Average Four Thread Time (ArrayList): 1707637.0microsec | Average Memory: 504805.0KB
+Average Eight Thread Time (ArrayList): 1405436.0microsec | Average Memory: 609924.0KB
+Average Sixteen Thread Time (ArrayList): 1377047.0microsec | Average Memory: 519635.0KB

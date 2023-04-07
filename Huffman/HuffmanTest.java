@@ -13,7 +13,7 @@ public class HuffmanTest {
     {
         if(args.length !=3)
         {
-            System.out.println("Usage: java HuffmanTest <string size> <num tests> <num threads>");
+            System.out.println("Usage: java HuffmanTest <string size> <num tests>");
             return;
         }
         STRING_SIZE = Integer.parseInt(args[0]);
