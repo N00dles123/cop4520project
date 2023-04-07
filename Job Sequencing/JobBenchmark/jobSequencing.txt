@@ -1,0 +1,14 @@
+ARRAY SIZE: 10 | NUMBER OF TESTS: 2
+ | NUMBER OF TIME SLOTS: 1000
+Test (ArrayList) 1 (Single Thread)	Time: 3093.0microsec | Memory: 2KB
+Test (ArrayList) 1 (4 Thread)	Time: 4575.0microsec | Memory: 1553KB
+Test (ArrayList) 1 (8 Thread)	Time: 919.0microsec | Memory: 421KB
+Test (ArrayList) 1 (16 Thread)	Time: 925.0microsec | Memory: 337KB
+Test (ArrayList) 2 (Single Thread)	Time: 108.0microsec | Memory: 167KB
+Test (ArrayList) 2 (4 Thread)	Time: 689.0microsec | Memory: 253KB
+Test (ArrayList) 2 (8 Thread)	Time: 806.0microsec | Memory: 337KB
+Test (ArrayList) 2 (16 Thread)	Time: 713.0microsec | Memory: 337KB
+Average Single Thread Time (ArrayList): 1600.0microsec | Average Memory: 84.0KB
+Average Four Thread Time (ArrayList): 2632.0microsec | Average Memory: 903.0KB
+Average Eight Thread Time (ArrayList): 862.0microsec | Average Memory: 379.0KB
+Average Sixteen Thread Time (ArrayList): 819.0microsec | Average Memory: 337.0KB

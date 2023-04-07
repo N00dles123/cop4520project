@@ -1,7 +1,7 @@
 //simple implementation of the n squared runtime job sequencing problem
 import java.util.*;
 
-class jobSequencing{
+class JobSequencing{
     static MultiMerge<Job> sorter = new MultiMerge<Job>();
     
     

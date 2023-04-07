@@ -7,24 +7,22 @@ import java.util.*;
 public class JobTest {
     private static int ARRAY_SIZE;
     private static int NUM_TESTS;
-    private static int NUM_THREADS;
     private static int SLOTS;
 
-    jobSequencing js = new jobSequencing();
+    JobSequencing js = new JobSequencing();
 
     public static void main(String[] args){
-        if(args.length != 4){
+        if(args.length != 3){
             System.out.println("Usage: java jobTest <array size> <num tests> <num threads> <timeslots>");
             return;
         }
 
         ARRAY_SIZE = Integer.parseInt(args[0]);
         NUM_TESTS = Integer.parseInt(args[1]);
-        NUM_THREADS = Integer.parseInt(args[2]);
-        SLOTS = Integer.parseInt(args[3]);
+        SLOTS = Integer.parseInt(args[2]);
 
         System.out.println("ARRAY SIZE: " + ARRAY_SIZE + " | NUMBER OF TESTS: " + NUM_TESTS + 
-                        "\nNUMBER OF THREADS: " + NUM_THREADS + " | NUMBER OF TIME SLOTS: " + SLOTS);
+                        "\n | NUMBER OF TIME SLOTS: " + SLOTS);
         
         
         // now create giant array of items to test
