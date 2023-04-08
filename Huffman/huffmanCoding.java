@@ -36,7 +36,7 @@ public class huffmanCoding {
         if(nThreads == 1)
         {
             // regular merge sort
-            huffmanCoding.mergeSort(nodes);
+            sorter.sort(nodes, 1);
         }
         else if(nThreads == 4)
         {
@@ -53,7 +53,13 @@ public class huffmanCoding {
             // 16 threads
             sorter.sort(nodes, 16);
         }
-        
+        /* 
+        // now that we have sorted testing to see if its sorted
+        for(Node node : nodes)
+        {
+            System.out.println(node.frequency);
+        }
+        */
         // now that we have sorted we can build
         Queue<Node> queue1 = new LinkedList<>();
         Queue<Node> queue2 = new LinkedList<>();
@@ -361,7 +367,7 @@ public class huffmanCoding {
     }
 
     public static void main(String[] args) {
-        String inputText = generateRandomString(10000000);
+        String inputText = generateRandomString(10);
         System.out.println("Text length: " + inputText.length());
 
         // ArrayList single thread implementation
@@ -376,6 +382,7 @@ public class huffmanCoding {
         end = System.currentTimeMillis();
         System.out.println("Multi Thread ArrayList Merge Sort: " + (end - start));
     
+        /*
         // Array single thread implementation
         start = System.currentTimeMillis();
         HuffmanCode(inputText, 1);
@@ -388,6 +395,7 @@ public class huffmanCoding {
         HuffmanCode(inputText, 4);
         end = System.currentTimeMillis();
         System.out.println("Multi Thread Array Merge Sort: " + (end - start));
+        */
     }
 
 }
