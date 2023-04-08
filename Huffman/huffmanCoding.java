@@ -38,6 +38,11 @@ public class huffmanCoding {
             // regular merge sort
             huffmanCoding.mergeSort(nodes);
         }
+        else if(nThreads == 4)
+        {
+            // 4 threads
+            sorter.sort(nodes, 4);
+        }
         else if(nThreads == 8)
         {
             // 8 threads
@@ -145,6 +150,12 @@ public class huffmanCoding {
             huffmanCoding.mergeSortArray(nodes);
         }
         
+        else if(nThreads == 4)
+        {
+            // 4 threads
+            sorter.sort(nodes, 4);
+        }
+
         else if(nThreads == 8)
         {
             // 8 threads
