@@ -11,7 +11,7 @@ public class KnapsackTest {
     // this program will run benchmarks and compare single thread to NUM_THREADS runtimes
     public static void main(String[] args){
         if(args.length != 3){
-            System.out.println("Usage: java KnapsackTest <array size> <num tests> <num threads> <capacity>");
+            System.out.println("Usage: java KnapsackTest <array size> <num tests> <capacity>");
             return;
         }
         ARRAY_SIZE = Integer.parseInt(args[0]);
