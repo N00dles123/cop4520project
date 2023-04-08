@@ -40,7 +40,7 @@ public class HuffmanTest {
             long[] singleThreadList = ht.huffmanTime(inputText, 1);
             singleThreadTotalTimeList += singleThreadList[0];
             singleThreadTotalMemoryList += singleThreadList[1];
-            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: " + singleThreadList[0] / 1.0 + "microsec" + " | Memory: " + singleThreadList[1] + "KB");
+            System.out.println("Test (ArrayList) " + (i+1) + " (Single Thread)\tTime: " + singleThreadList[0] / 1.0 + "nanosec" + " | Memory: " + singleThreadList[1] + "KB");
             //Collections.shuffle(Arrays.asList(items)); // shuffle array
             // clear memory 
             System.gc();
@@ -49,7 +49,7 @@ public class HuffmanTest {
             long[] multiThreadList = ht.huffmanTime(inputText, 4);
             fourThreadTotalTimeList += multiThreadList[0];
             fourThreadTotalMemoryList += multiThreadList[1];
-            System.out.println("Test (ArrayList) " + (i+1) + " (4 Thread)\tTime: " + multiThreadList[0] / 1.0 + "microsec" + " | Memory: " + multiThreadList[1]+ "KB");
+            System.out.println("Test (ArrayList) " + (i+1) + " (4 Thread)\tTime: " + multiThreadList[0] / 1.0 + "nanosec" + " | Memory: " + multiThreadList[1]+ "KB");
             //Collections.shuffle(Arrays.asList(items));
             // clear memory 
             System.gc();
@@ -58,7 +58,7 @@ public class HuffmanTest {
             long[] eightThreadList = ht.huffmanTime(inputText, 8);
             eightThreadTotalTimeList += eightThreadList[0];
             eightThreadTotalMemoryList += eightThreadList[1];
-            System.out.println("Test (ArrayList) " + (i+1) + " (8 Thread)\tTime: " + eightThreadList[0] / 1.0 + "microsec" + " | Memory: " + eightThreadList[1] + "KB");
+            System.out.println("Test (ArrayList) " + (i+1) + " (8 Thread)\tTime: " + eightThreadList[0] / 1.0 + "nanosec" + " | Memory: " + eightThreadList[1] + "KB");
             //Collections.shuffle(Arrays.asList(items));
             // clear memory 
             System.gc();
@@ -67,7 +67,7 @@ public class HuffmanTest {
             long[] sixteenThreadList = ht.huffmanTime(inputText, 16);
             sixteenThreadTotalTimeList += sixteenThreadList[0];
             sixteenThreadTotalMemoryList += sixteenThreadList[1];
-            System.out.println("Test (ArrayList) " + (i+1) + " (16 Thread)\tTime: " + sixteenThreadList[0] / 1.0 + "microsec" + " | Memory: " + sixteenThreadList[1] + "KB");
+            System.out.println("Test (ArrayList) " + (i+1) + " (16 Thread)\tTime: " + sixteenThreadList[0] / 1.0 + "nanosec" + " | Memory: " + sixteenThreadList[1] + "KB");
             //Collections.shuffle(Arrays.asList(items));
             // clear memory 
             System.gc();
@@ -86,10 +86,10 @@ public class HuffmanTest {
         double sixteenThreadListAverageMem = sixteenThreadTotalMemoryList / NUM_TESTS / 1.0;
        
 
-        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverage + "microsec" + " | Average Memory: " + singleThreadListAverageMem + "KB");
-        System.out.println("Average Four Thread Time (ArrayList): " + fourThreadListAverage + "microsec" + " | Average Memory: " + fourThreadListAverageMem + "KB");
-        System.out.println("Average Eight Thread Time (ArrayList): " + eightThreadListAverage + "microsec" + " | Average Memory: " + eightThreadListAverageMem + "KB");
-        System.out.println("Average Sixteen Thread Time (ArrayList): " +sixteenThreadListAverage + "microsec" + " | Average Memory: " + sixteenThreadListAverageMem + "KB");
+        System.out.println("Average Single Thread Time (ArrayList): " + singleThreadListAverage + "nanosec" + " | Average Memory: " + singleThreadListAverageMem + "KB");
+        System.out.println("Average Four Thread Time (ArrayList): " + fourThreadListAverage + "nanosec" + " | Average Memory: " + fourThreadListAverageMem + "KB");
+        System.out.println("Average Eight Thread Time (ArrayList): " + eightThreadListAverage + "nanosec" + " | Average Memory: " + eightThreadListAverageMem + "KB");
+        System.out.println("Average Sixteen Thread Time (ArrayList): " +sixteenThreadListAverage + "nanosec" + " | Average Memory: " + sixteenThreadListAverageMem + "KB");
     }
 
     // this method will run the huffman coding algorithm and return the time it took to run
@@ -99,7 +99,7 @@ public class HuffmanTest {
         huffmanCoding.HuffmanCode(inputText, nThreads);
         long endTime = System.currentTimeMillis();
         long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        return new long [] {(endTime - startTime)/1000, (afterUsedMem - beforeUsedMem)/1000};
+        return new long [] {(endTime - startTime), (afterUsedMem - beforeUsedMem)/1000};
     }
 
     // // this method will run the huffman coding algorithm and return the time it took to run
