@@ -36,7 +36,7 @@ public class huffmanCoding {
         if(nThreads == 1)
         {
             // regular merge sort
-            sorter.sort(nodes, 1);
+            huffmanCoding.mergeSort(nodes);
         }
         else if(nThreads == 4)
         {
